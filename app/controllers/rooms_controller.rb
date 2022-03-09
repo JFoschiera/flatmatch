@@ -58,6 +58,7 @@ class RoomsController < ApplicationController
       :price,
       :status,
       :utilities,
+      :heart,
       presence: true
     )
   end
