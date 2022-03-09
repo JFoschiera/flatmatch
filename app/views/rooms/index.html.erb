@@ -10,9 +10,9 @@
           <% @rooms.each do |room| %>
           <div class=" col">
             <%= link_to 'Check Room', room_path(room) %>
-            <h3><% room.address %></h3>
-            <p><% room.city %></p>
-            <p><% room.price %></p>
+            <h3><%= room.address %></h3>
+            <p><%= room.city %></p>
+            <p><%= room.price %></p>
           </div>
           <% end %>
           <div class="btn-index-fix-margin">

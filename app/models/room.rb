@@ -1,10 +1,17 @@
 class Room < ApplicationRecord
-  validates :pets, inclusion: { in: ['allowed', 'not allowed'] }
-  validates :smoking, inclusion: { in: ['allowed', 'not allowed'] }
-  validates :visitors, inclusion: { in: ['at any time', 'under request', 'not allowed'] }
-  validates :pets, inclusion: { in: ['allowed', 'not allowed'] }
-  validates :status, inclusion: { in: ['student', 'working', 'looking for job', 'just arrived'] }
-  validates :utilities, inclusion: { in: ['included', 'not included'] }
+
+  PETSPER = ['allowed', 'not allowed']
+  SMOKEPER = ['allowed', 'not allowed']
+  VISITPER = ['at any time', 'under request', 'not allowed']
+  STATUSPER = ['student', 'working', 'looking for job', 'just arrived']
+  UTILIPER = ['included', 'not included']
+
+
+  validates :pets, inclusion: { in: PETSPER }
+  validates :smoking, inclusion: { in: SMOKEPER }
+  validates :visitors, inclusion: { in: VISITPER }
+  validates :status, inclusion: { in: STATUSPER }
+  validates :utilities, inclusion: { in: UTILIPER }
 
   validates :roommates,
             :size,
