@@ -1,0 +1,32 @@
+<div class="mt-5">
+  <h1 class="text-center">Flatmatch</h1>
+  <div class="container">
+    <div class="row">
+      <% @questions.each do |question| %>
+        <div class="col py-3">
+          <div class="card-container my-5 mx-3 py-5 px-5">
+            <p class="bg-white question py-3 px-3 mb-5"><%= question.question_description %></p>
+            <%= simple_form_for(@answer) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="form-inputs">
+              <label for="customRange" class="form-label">How much do you agree?</label>
+              <%= f.range_field :score, :in => 1..10, :step => 1, class: 'w-100 form-range', id: 'customRange' %>
+            </div>
+            <div class="pontuation">
+            <% for i in 1..10 %>
+              <span class="text-center"><%= i %></span>
+            <% end %>
+            </div>
+          </div>
+          <div class="form-actions" style="text-align: right;">
+            <%= button_tag type: 'submit', class: "btn btn-transparent" do %>
+              <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
