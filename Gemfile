@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 
+
+gem "omniauth-rails_csrf_protection"
 # For ignored/config/application.yml
 gem "figaro"
 # For facebook authentication

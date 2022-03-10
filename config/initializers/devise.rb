@@ -13,7 +13,12 @@ Devise.setup do |config|
                   scope: 'email',
                   info_fields: 'email, first_name, last_name',
                   image_size: 'square',  # 50x50, guaranteed ratio
-                  secure_image_url: true
+                  secure_image_url: true,
+                  provider_ignores_state: true,
+                  client_options: {
+                    site: 'https://graph.facebook.com/v13.0',
+                    authorize_url: "https://www.facebook.com/v13.0/dialog/oauth"
+                  }
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.

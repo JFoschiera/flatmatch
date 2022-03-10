@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :users2, class_name: "Compatibilities", foreign_key: "user2_id", dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  devise :omniauthable, omniauth_providers: [:facebook]
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
