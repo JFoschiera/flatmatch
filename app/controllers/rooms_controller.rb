@@ -58,10 +58,8 @@ class RoomsController < ApplicationController
       :description,
       :floor,
       :price,
-      :status,
       :utilities,
-      :heart,
-      presence: true
+      :user_id
     )
   end
 
