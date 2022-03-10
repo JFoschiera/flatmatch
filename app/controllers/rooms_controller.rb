@@ -1,6 +1,8 @@
 class RoomsController < ApplicationController
+
   def index
     @rooms = Room.all
+    set_markers
   end
 
   def show
@@ -61,5 +63,14 @@ class RoomsController < ApplicationController
       :heart,
       presence: true
     )
+  end
+
+  def set_markers
+    @markers = @rooms.geocoded.map do |room|
+      {
+        lat: room.latitude,
+        lng: room.longitude
+      }
+    end
   end
 end
