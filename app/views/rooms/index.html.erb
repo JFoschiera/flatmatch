@@ -2,21 +2,22 @@
   <div class="row justify-content-center">
     <div class="col-6">
 
-      <h1 style="padding: 30px">Rooms</h1>
+      <h1 class="container mt-5">Rooms</h1>
+      <h4 style="padding: 30px"><%= link_to 'Offer Room', new_room_path %></h4>
 
       <div class="container">
         <div class="row">
 
           <% @rooms.each do |room| %>
           <div class=" col">
-            <%= link_to 'Check Room', room_path(room) %>
-            <h3><%= room.address %></h3>
+            <h5><%= room.address %></h5>
             <p><%= room.city %></p>
             <p><%= room.price %></p>
+            <%= link_to 'Check Room', room_path(room) %>
           </div>
           <% end %>
           <div class="btn-index-fix-margin">
-            <%= link_to 'Offer Room', new_room_path, class: 'btn btn-outline-dark' %>
+
           </div>
         </div>
       </div>

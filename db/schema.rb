@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_140109) do
+ActiveRecord::Schema.define(version: 2022_03_10_145846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,14 @@ ActiveRecord::Schema.define(version: 2022_03_10_140109) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "deals", force: :cascade do |t|
+  create_table "matchs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_deals_on_room_id"
-    t.index ["user_id"], name: "index_deals_on_user_id"
+    t.boolean "like", default: false
+    t.index ["room_id"], name: "index_matchs_on_room_id"
+    t.index ["user_id"], name: "index_matchs_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -56,10 +57,10 @@ ActiveRecord::Schema.define(version: 2022_03_10_140109) do
     t.string "utilities"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.boolean "heart"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +80,6 @@ ActiveRecord::Schema.define(version: 2022_03_10_140109) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "deals", "rooms"
-  add_foreign_key "deals", "users"
+  add_foreign_key "matchs", "rooms"
+  add_foreign_key "matchs", "users"
 end
