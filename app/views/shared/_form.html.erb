@@ -1,0 +1,24 @@
+<%= simple_form_for(room) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :roommates %>
+    <%= f.input :size %>
+    <%= f.input :address %>
+    <%= f.input :city %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :pets, collection: Room::PETSPER %>
+    <%= f.input :smoking, collection: Room::SMOKEPER %>
+    <%= f.input :visitors, collection: Room::VISITPER %>
+    <%= f.input :description %>
+    <%= f.input :floor %>
+    <%= f.input :price %>
+    <%= f.input :utilities,collection: Room::UTILIPER %> %>
+    <%= f.input :heart %>
+  </div>
+  <div class="form-actions" style="padding-bottom: 30px">
+    <%= f.button :submit, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+<% end  %>
