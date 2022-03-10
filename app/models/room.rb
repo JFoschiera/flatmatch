@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  
+  belongs_to :user
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -8,7 +8,6 @@ class Room < ApplicationRecord
   VISITPER = ['at any time', 'under request', 'not allowed']
   STATUSPER = ['student', 'working', 'looking for job', 'just arrived']
   UTILIPER = ['included', 'not included']
-
 
   validates :pets, inclusion: { in: PETSPER }
   validates :smoking, inclusion: { in: SMOKEPER }
