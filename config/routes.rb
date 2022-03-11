@@ -5,6 +5,7 @@ Rails.application.routes.draw do
               }
   devise_scope :user do
     get 'about', to: 'devise/sessions#about'
+    get 'phone', to: 'devise/sessions#phone'
   end
 
 
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   end
 
   resources :answers, only: [:index, :show, :new, :create]
+  resources :phones, only: [:new, :create]
 end
