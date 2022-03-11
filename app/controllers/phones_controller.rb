@@ -1,15 +1,15 @@
 class PhonesController < ApplicationController
   def new
     @phone = Phone.new
-    current_user.phone = @phone
   end
 
   def create
     @phone = Phone.new(phone_params)
+    @phone.user = current_user
     @phone.save
 
     if @phone.save
-      redirect_to new_answer_path, notice: 'Phone was successfully created.'
+      redirect_to new_about_path, notice: 'Phone was successfully created.'
     else
       render :new
     end
