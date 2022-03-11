@@ -15,7 +15,7 @@ class AboutsController < ApplicationController
     @about.save
 
     if @about.save
-      redirect_to rooms_path, notice: 'Room was successfully created.'
+      redirect_to new_answer_path, notice: 'Room was successfully created.'
     else
       render :new
     end
