@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :matchs
   end
 
+  resources :abouts, only: [:new, :create]
   resources :answers, only: [:index, :show, :new, :create]
 end
