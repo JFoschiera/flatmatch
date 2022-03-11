@@ -1,1 +1,16 @@
 // Specific CSS for your home-page
+body { 
+  background-color: #DBDBDB;
+}
+
+.buttons-home {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 6rem !important;
+  font-weight: 200;
+}
+
+.description {
+  font-weight: lighter !important;
+}
