@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2022_03_11_191012) do
     t.index ["user_id"], name: "index_matchs_on_user_id"
   end
 
+  create_table "phones", force: :cascade do |t|
+    t.string "cellphone"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_phones_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "question_description"
     t.datetime "created_at", precision: 6, null: false
@@ -106,4 +114,5 @@ ActiveRecord::Schema.define(version: 2022_03_11_191012) do
   add_foreign_key "answers", "users"
   add_foreign_key "matchs", "rooms"
   add_foreign_key "matchs", "users"
+  add_foreign_key "phones", "users"
 end
