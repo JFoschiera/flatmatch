@@ -22,7 +22,7 @@
       <%= f.button :submit, "Sign up", class: "btn btn-secondary py-3 rounded-pill btn-block mb-4 mt-4", style: "width: 100%" %>
     </div>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-secondary py-3 rounded-pill btn-block mb-4 mt-2", style: "width: 100%" %><br />
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-secondary py-3 rounded-pill btn-block mb-4 mt-2", style: "width: 100%" %><br>
     <% end %>
   <% end %>
 

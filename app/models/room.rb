@@ -27,6 +27,6 @@ class Room < ApplicationRecord
             :description,
             :floor,
             :price,
-            :status,
+            :utilities,
             presence: true
 end
