@@ -13,7 +13,9 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
-      zoom: 9
+      zoom: 6,
+      center: [4.9, 52.3], // starting position
+
     })
     this._addMarkersToMap()
     this._fitMapToMarkers()
@@ -35,14 +37,14 @@ export default class extends Controller {
   }
 
   _addZoomToMap() {
-      this.map.addControl(new mapboxgl.NavigationControl());
-      document.getElementById('listing-group').addEventListener('change', (e) => {
-        const handler = e.target.id;
-        if (e.target.checked) {
-            map[handler].enable();
-        } else {
-            map[handler].disable();
-        }
-      });
-  }
+    this.map.addControl(new mapboxgl.NavigationControl());
+    document.getElementById('listing-group').addEventListener('change', (e) => {
+      const handler = e.target.id;
+      if (e.target.checked) {
+        map[handler].enable();
+      } else {
+        map[handler].disable();
+      }
+    });
+}
 }
