@@ -76,6 +76,7 @@ class RoomsController < ApplicationController
       :floor,
       :price,
       :utilities,
+      :photo,
       :user_id
     )
   end
