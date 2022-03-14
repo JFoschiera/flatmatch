@@ -30,6 +30,8 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+    @room.user = current_user
+
     @room.save
 
     if @room.save
