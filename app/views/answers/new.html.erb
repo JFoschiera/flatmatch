@@ -5,7 +5,12 @@
       <% @questions.each do |question| %>
         <div class="col py-3">
           <div class="card-container my-5 mx-3 py-5 px-5">
-            <p class="bg-white question py-3 px-3 mb-5"><%= question.question_description %></p>
+            <div class="bg-white question py-2 px-2 mb-3" style="height: 26vh">
+              <p><strong><%= question.question_description %></strong></p>
+              <p style="font-size: 12px; margin-top: -10px"><%= question.answer_description.partition('10').first %></p>
+              <p style="font-size: 12px; margin-top: -10px">10 <%= question.answer_description.partition('10 ').last %></p>
+
+            </div>
             <%= simple_form_for(@answer) do |f| %>
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
