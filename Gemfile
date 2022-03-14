@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 
+# Bundle for search
 
 gem "omniauth-rails_csrf_protection"
 # For ignored/config/application.yml
@@ -72,3 +73,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem "geocoder"
 gem 'cloudinary', '~> 1.16.0'
+gem 'pg_search', '~> 2.3.0'
+
