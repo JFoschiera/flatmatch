@@ -1,10 +1,10 @@
     <% @rooms.each do |room| %>
     <div class="card-trip" id="resize-cards">
-      <%# if room.photo.attached? %>
-      <%#= cl_image_tag experience.photo.key, height: 300, width: 400, crop: :fill %>
-      <%# else %>
+      <% if room.photo.attached? %>
+      <%= cl_image_tag experience.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
       <%= image_tag "no-image-found.png", height: 300, width: 400, crop: :fill %>
-      <%# end %>
+      <% end %>
       <div class="card-trip-infos">
         <div>
           <h2><%= room.address  %></h2>
