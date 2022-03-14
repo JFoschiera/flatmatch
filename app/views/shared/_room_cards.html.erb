@@ -1,25 +1,39 @@
 <% rooms.each do |room| %>
-  <div class="card-trip" id="resize-cards">
-    <% if room.photo.attached? %>
-      <%= cl_image_tag room.photo.key, height: 300, width: 400, crop: :fill %>
-    <% else %>
-      <%= image_tag "no-image-found.png", height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <div class="card-trip-infos">
-      <div>
-        <h2><%= room.address  %></h2>
-        <p> <strong> <%= room.city %> </strong> </p>
-        <p> <strong> <%= room.start_date %> </strong> </p>
-        <%= link_to "Show more", room_url(room) %>
-      </div>
-      <h2 class="card-trip-pricing">R$<%= sprintf("%.2f", room.price) %></h2>
-      <% if room.user.avatar.attached? %>
-        <%= cl_image_tag room.user.avatar.key, class: "card-trip-user avatar", alt: "avatar" %>
-      <% elsif room.user.uid %>
-        <%= image_tag room.user.facebook_picture_url, class: "card-trip-user avatar", alt: "avatar" %>
+  <% if room.user.id != current_user.id %>
+    <div class="card-trip" id="resize-cards">
+      <% if room.photo.attached? %>
+        <%= cl_image_tag room.photo.key, height: 300, width: 400, crop: :fill %>
       <% else %>
-        <%= image_tag "avatar.webp", class: "card-trip-user avatar-bordered" %>
+        <%= image_tag "no-image-found.png", height: 300, width: 400, crop: :fill %>
       <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= room.address  %></h2>
+          <p> <strong> <%= room.city %> </strong> </p>
+          <p> <strong> <%= room.start_date %> </strong> </p>
+          <%= link_to "Show more", room_url(room) %>
+        </div>
+        <div>
+          <% if (room.user.answers && room.user.answers.length) && (current_user.answers && current_user.answers.length) %>
+            <% result = 0 %>
+            <% room.user.answers.each_with_index do |answer, index| %>
+              <% current_score = current_user.answers[index].score %>
+              <% answer_score = answer.score %>
+              <% difference = (current_score - answer_score).abs %>
+              <% result += difference %>
+            <% end %>
+            <span class="badge rounded-pill bg-secondary compatibility"><%= 100 - result %>%</span>
+          <% end %>
+          <h2 class="card-trip-pricing">R$<%= sprintf("%.2f", room.price) %></h2>
+          <% if room.user.avatar.attached? %>
+            <%= cl_image_tag room.user.avatar.key, class: "card-trip-user avatar", alt: "avatar" %>
+          <% elsif room.user.uid %>
+            <%= image_tag room.user.facebook_picture_url, class: "card-trip-user avatar", alt: "avatar" %>
+          <% else %>
+            <%= image_tag "avatar.webp", class: "card-trip-user avatar-bordered" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
