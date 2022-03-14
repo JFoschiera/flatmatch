@@ -61,6 +61,15 @@ class RoomsController < ApplicationController
 
   private
 
+  def set_markers
+    @markers = @rooms.geocoded.map do |room|
+      {
+        lat: room.latitude,
+        lng: room.longitude
+      }
+    end
+  end
+
   def room_params
     params.require(:room).permit(
       :roommates,
@@ -79,14 +88,5 @@ class RoomsController < ApplicationController
       :photo,
       :user_id
     )
-  end
-
-  def set_markers
-    @markers = @rooms.geocoded.map do |room|
-      {
-        lat: room.latitude,
-        lng: room.longitude
-      }
-    end
   end
 end
