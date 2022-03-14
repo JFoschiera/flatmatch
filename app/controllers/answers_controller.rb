@@ -18,7 +18,7 @@ class AnswersController < ApplicationController
     @answer.save
 
     if @answer.save
-      redirect_to root_path, notice: 'Answer was successfully created.'
+      redirect_to rooms_path, notice: 'Answer was successfully created.'
     else
       render :new
     end

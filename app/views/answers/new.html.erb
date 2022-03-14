@@ -34,9 +34,9 @@
 
 
 
-              <div class="form-actions" style="text-align: right;">
+              <div class="form-actions" style="text-align: right" data-controller= "disable-button">
 
-                <%= button_tag type: 'submit', class: "btn btn-transparent", data: { action: "click->questions#next", question: index } do %>
+                <%= button_tag type: 'submit', class: "btn btn-transparent", data: { action: "click->questions#next disable-button#disable", question: index } do %>
                   <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
                 <% end %>
 
