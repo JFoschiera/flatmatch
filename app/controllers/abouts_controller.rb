@@ -1,10 +1,4 @@
 class AboutsController < ApplicationController
-
-
-  # def show
-  #   @about = User.find(params[:id])
-  # end
-
   def new
     @about = About.new
   end
@@ -15,7 +9,11 @@ class AboutsController < ApplicationController
     @about.save
 
     if @about.save
-      redirect_to new_answer_path, notice: 'Room was successfully created.'
+      if !current_user.answers || current_user.answers.length < 10
+        redirect_to new_answer_path
+      else
+        redirect_to rooms_path
+      end
     else
       render :new
     end

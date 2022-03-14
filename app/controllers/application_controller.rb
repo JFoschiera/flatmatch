@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource_or_scope)
-    rooms_path
+    if !current_user.phone
+      new_phone_path
+    elsif !current_user.about
+      new_about_path
+    elsif !current_user.answers || current_user.answers.length < 10
+      new_answer_path
+    else
+      rooms_path
+    end
   end
 end

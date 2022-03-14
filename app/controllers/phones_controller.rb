@@ -9,7 +9,11 @@ class PhonesController < ApplicationController
     @phone.save
 
     if @phone.save
-      redirect_to new_about_path, notice: 'Phone was successfully created.'
+      if current_user.about
+        redirect_to new_answer_path
+      else
+        redirect_to new_about_path
+      end
     else
       render :new
     end
