@@ -26,5 +26,9 @@ export default class extends Controller {
     }
   }
 
+  disable() {
+    this.buttonTarget.setAttribute("disabled", "")
+  }
+
 
 }
