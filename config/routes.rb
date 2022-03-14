@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+             controllers: {
+               omniauth_callbacks: 'users/omniauth_callbacks',
+              }
+  devise_scope :user do
+    get 'about', to: 'devise/sessions#about'
+    get 'phone', to: 'devise/sessions#phone'
+  end
 
-  root to: 'page#home'
+
+  root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :rooms do
     resources :matchs
   end
 
+  resources :abouts, only: [:new, :create]
   resources :answers, only: [:index, :show, :new, :create]
+  resources :phones, only: [:new, :create]
 end

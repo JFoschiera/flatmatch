@@ -2,8 +2,8 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
-    <%= f.input :roommates %>
-    <%= f.input :size %>
+    <%= f.input :roommates, placeholder: 'How many people live in the house?' %>
+    <%= f.input :size, placeholder: 'In meters square' %>
     <%= f.input :address %>
     <%= f.input :city %>
     <%= f.input :start_date %>
@@ -11,11 +11,12 @@
     <%= f.input :pets, collection: Room::PETSPER %>
     <%= f.input :smoking, collection: Room::SMOKEPER %>
     <%= f.input :visitors, collection: Room::VISITPER %>
-    <%= f.input :description %>
+    <%= f.input :description, placeholder: 'Tell the comunity a bit about the co living in the house.' %>
     <%= f.input :floor %>
     <%= f.input :price %>
     <%= f.input :utilities,collection: Room::UTILIPER %>
-    <div class="form-actions" style="padding-bottom: 30px">
+  </div>
+  <div class="form-actions mt-3" style="padding-bottom: 30px">
     <%= f.button :submit, class: 'btn btn-outline-dark' %>
     </div>
   </div>

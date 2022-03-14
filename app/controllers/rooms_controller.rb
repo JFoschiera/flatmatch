@@ -1,9 +1,24 @@
 class RoomsController < ApplicationController
 
+  # def index
+  #   @rooms = Room.all
+  #   set_markers
+  # end
+
   def index
+    @room = Room.new
     @rooms = Room.all
-    set_markers
+    if params[:query].present?
+      @rooms = Room.search_by_city(params[:query])
+      set_markers
+    else
+      @rooms = Room.all
+      set_markers
+    end
   end
+
+
+
 
   def show
     @room = Room.find(params[:id])

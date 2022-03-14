@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_185055) do
+ActiveRecord::Schema.define(version: 2022_03_11_191012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abouts", force: :cascade do |t|
+    t.text "about_user"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_abouts_on_user_id"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "question_id", null: false
@@ -43,6 +51,14 @@ ActiveRecord::Schema.define(version: 2022_03_10_185055) do
     t.boolean "like", default: false
     t.index ["room_id"], name: "index_matchs_on_room_id"
     t.index ["user_id"], name: "index_matchs_on_user_id"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "cellphone"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_phones_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -82,8 +98,6 @@ ActiveRecord::Schema.define(version: 2022_03_10_185055) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "phone"
-    t.string "about"
     t.string "provider"
     t.string "uid"
     t.string "facebook_picture_url"
@@ -95,8 +109,10 @@ ActiveRecord::Schema.define(version: 2022_03_10_185055) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "abouts", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "matchs", "rooms"
   add_foreign_key "matchs", "users"
+  add_foreign_key "phones", "users"
 end

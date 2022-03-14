@@ -7,27 +7,30 @@
           <div class="card-container my-5 mx-3 py-5 px-5">
             <p class="bg-white question py-3 px-3 mb-5"><%= question.question_description %></p>
             <%= simple_form_for(@answer) do |f| %>
-            <%= f.error_notification %>
-            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-            <div class="form-inputs">
-              <label for="customRange" class="form-label">How much do you agree?</label>
-              <%= f.range_field :score, :in => 1..10, :step => 1, class: 'w-100 form-range', id: 'customRange' %>
-            </div>
-            <div class="pontuation">
-            <% for i in 1..10 %>
-              <span class="text-center"><%= i %></span>
+              <%= f.error_notification %>
+              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+              <div class="form-inputs">
+                <%= f.range_field :score, :in => 1..10, :step => 1, class: 'w-100 form-range', id: 'customRange' %>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <div>
+                <p>0</p>
+                </div>
+                <div>
+                <p>10</p>
+                </div>
+              </div>
+
+              <div class="form-actions" style="text-align: right;">
+                <%= button_tag type: 'submit', class: "btn btn-transparent" do %>
+                  <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
+                <% end %>
+              </div>
             <% end %>
-            </div>
           </div>
-          <div class="form-actions" style="text-align: right;">
-            <%= button_tag type: 'submit', class: "btn btn-transparent" do %>
-              <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
-            <% end %>
-          </div>
-          <% end %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
