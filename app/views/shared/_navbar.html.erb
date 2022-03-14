@@ -13,12 +13,18 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <span class="nav-link disabled">
-              <%= current_user.first_name %>
+              <% if current_user.first_name %>
+                <%= current_user.first_name %>
+              <% else %>
+                <%= current_user.name %>
+              <% end %>
             </span>
           </li>
           <li class="nav-item dropdown">
             <% if current_user.facebook_picture_url %>
               <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% elsif current_user.avatar.attached? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
               <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
             <% end %>
