@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'about', to: 'devise/sessions#about'
     get 'phone', to: 'devise/sessions#phone'
+    get 'profile', to: 'devise/sessions#profile'
   end
 
 
