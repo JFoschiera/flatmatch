@@ -2,8 +2,6 @@
   <h1 class="text-center">Flatmatch</h1>
   <div class="container">
     <div class="row" data-controller="questions" >
-
-
       <% @questions.each_with_index do |question, index| %>
         <div id="question-<%= index %>" class=" <%= "d-none" unless index.zero? %> col py-3">
           <div class="card-container my-5 mx-3 py-5 px-5">
@@ -17,12 +15,9 @@
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
               <div class="form-inputs">
-                <%= f.range_field :score, :in => 1..10, :step => 1, class: 'w-100 form-range', id: 'customRange' %>
+                <%= f.range_field :score, :in => 0..10, :step => 1, class: 'w-100 form-range', id: 'customRange' %>
                 <%= f.input :question_id, as: :hidden, input_html: { value: question.id } %>
               </div>
-
-
-
               <div class="d-flex justify-content-between">
                 <div>
                 <p>0</p>
@@ -31,24 +26,14 @@
                 <p>10</p>
                 </div>
               </div>
-
-
-
               <div class="form-actions" style="text-align: right" data-controller= "disable-button">
-
                 <%= button_tag type: 'submit', class: "btn btn-transparent", data: { action: "click->questions#next disable-button#disable", question: index } do %>
                   <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
                 <% end %>
-
               </div>
-
-
             <% end %>
           </div>
         </div>
-
-
-
       <% end %>
     </div>
   </div>

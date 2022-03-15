@@ -35,7 +35,7 @@ class RoomsController < ApplicationController
     @room.save
 
     if @room.save
-      redirect_to @room, notice: 'Room was successfully created.'
+      redirect_to @rooms, notice: 'Room was successfully created.'
     else
       render :new
     end
