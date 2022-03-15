@@ -26,7 +26,7 @@
           <% end %>
           <h2 class="card-trip-pricing">R$<%= sprintf("%.2f", room.price) %></h2>
           <% if room.user.avatar.attached? %>
-            <%= cl_image_tag room.user.avatar.key, class: "card-trip-user avatar", alt: "avatar" %>
+            <%= cl_image_tag room.user.avatar.key, class: "card-trip-user avatar", gravity:"face", height:150, width:150, crop:"thumb" %>
           <% elsif room.user.uid %>
             <%= image_tag room.user.facebook_picture_url, class: "card-trip-user avatar", alt: "avatar" %>
           <% else %>

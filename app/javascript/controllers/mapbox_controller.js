@@ -20,6 +20,7 @@ export default class extends Controller {
     this._addMarkersToMap()
     this._fitMapToMarkers()
     this._addZoomToMap()
+    this._addMarkersToMap()
   }
 
   _addMarkersToMap() {
@@ -46,5 +47,15 @@ export default class extends Controller {
         map[handler].disable();
       }
     });
-}
+  }
+
+  _addMarkersToMap() {
+    this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window) // add this
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup) // add this
+        .addTo(this.map)
+    });
+  }
 }
