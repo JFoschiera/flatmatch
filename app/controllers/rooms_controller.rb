@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-
   # def index
   #   @rooms = Room.all
   #   set_markers
@@ -15,9 +14,6 @@ class RoomsController < ApplicationController
       set_markers
     end
   end
-
-
-
 
   def show
     @room = Room.find(params[:id])

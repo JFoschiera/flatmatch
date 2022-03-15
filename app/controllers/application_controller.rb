@@ -13,11 +13,17 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_logged_in
     if view_context.current_page?(root_path) && current_user
-      redirect_to rooms_path
+      if !current_user.phone
+        redirect_to new_phone_path
+      elsif !current_user.about
+        redirect_to new_about_path
+      elsif !current_user.answers || current_user.answers.length < 10
+        redirect_to new_answer_path
+      else
+        redirect_to rooms_path
+      end
     end
   end
-
-
 
   def after_sign_in_path_for(_resource_or_scope)
     if !current_user.phone
