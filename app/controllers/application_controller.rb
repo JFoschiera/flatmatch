@@ -10,6 +10,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :phone, :about, :avatar])
   end
 
+  # def authenticate_user!
+  #   if user_signed_in?
+  #     redirect_to rooms_path
+  #   else
+  #     redirect_to root_path
+  #   end
+  # end
+
+
+
   def after_sign_in_path_for(_resource_or_scope)
     if !current_user.phone
       new_phone_path
