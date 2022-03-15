@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :redirect_if_logged_in
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -10,13 +11,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :phone, :about, :avatar])
   end
 
-  # def authenticate_user!
-  #   if user_signed_in?
-  #     redirect_to rooms_path
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
+  def redirect_if_logged_in
+    if view_context.current_page?(root_path) && current_user
+      redirect_to rooms_path
+    end
+  end
 
 
 
