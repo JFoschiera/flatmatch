@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @photos = @room.photos
   end
 
   def new
@@ -80,8 +81,8 @@ class RoomsController < ApplicationController
       :floor,
       :price,
       :utilities,
-      :photo,
-      :user_id
+      :user_id,
+      photos: []
     )
   end
 end

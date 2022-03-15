@@ -16,7 +16,7 @@
     <%= f.input :price %>
     <%= f.input :utilities,collection: Room::UTILIPER %>
     <br>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
   <div class="form-actions mt-3" style="padding-bottom: 30px">
     <%= f.button :submit, class: 'btn btn-outline-dark' %>
