@@ -1,11 +1,50 @@
 <% rooms.each do |room| %>
   <% if room.user.id != current_user.id %>
     <div class="card-trip" id="resize-cards">
-      <% if room.photos.attached? %>
-        <%= cl_image_tag room.photos[0].key, height: 300, width: 400, crop: :fill %>
-      <% else %>
-        <%= image_tag "no-image-found.png", height: 300, width: 400, crop: :fill %>
-      <% end %>
+
+<div class="container">
+
+<div class="mt-3">
+
+ <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+
+  <% if room.photos.attached? %>
+      <% room.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+             <%= cl_image_tag photo.key, class: "d-block w-100", height: 150, width: 400, crop: :fill %>
+        </div>
+          <% end %>
+  <% else %>
+
+
+        <div class="carousel-item active">
+             <%= image_tag 'no-image-found.png', height: 150, width: 400, crop: :fill %>
+       </div>
+  <% end %>
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+
+
+
       <div class="card-trip-infos">
         <div>
           <h2><%= room.address  %></h2>
@@ -26,7 +65,7 @@
           <% end %>
           <h2 class="card-trip-pricing">R$<%= sprintf("%.2f", room.price) %></h2>
           <% if room.user.avatar.attached? %>
-            <%= cl_image_tag room.user.avatar.key, class: "card-trip-user avatar", gravity:"face", height:150, width:150, crop:"thumb" %>
+            <%= cl_image_tag room.user.avatar.key, class: "card-trip-user avatar", alt: "avatar" %>
           <% elsif room.user.uid %>
             <%= image_tag room.user.facebook_picture_url, class: "card-trip-user avatar", alt: "avatar" %>
           <% else %>
