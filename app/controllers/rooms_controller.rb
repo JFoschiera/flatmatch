@@ -6,7 +6,6 @@ class RoomsController < ApplicationController
   # end
 
   def index
-    @room = Room.new
     @rooms = Room.all
     if params[:query].present?
       @rooms = Room.search_by_city(params[:query])
@@ -35,7 +34,7 @@ class RoomsController < ApplicationController
     @room.save
 
     if @room.save
-      redirect_to @rooms, notice: 'Room was successfully created.'
+      redirect_to rooms_path, notice: 'Room was successfully created.'
     else
       render :new
     end
