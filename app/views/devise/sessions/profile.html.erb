@@ -1,5 +1,4 @@
 <div class="container mt-3 mx-2">
-
   <% if current_user.facebook_picture_url %>
     <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
   <% elsif current_user.avatar.attached? %>
@@ -7,18 +6,23 @@
   <% else %>
     <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
   <% end %>
-
-  <h1 class="mt-4"><strong><% if current_user.first_name %>
-    <%= current_user.first_name %>
-    <% else %>
-    <%= current_user.name %>
+  <h1 class="mt-4">
+    <strong>
+      <% if current_user.first_name %>
+        <%= current_user.first_name %>
+      <% else %>
+        <%= current_user.name %>
+      <% end %>
+      's Profile
+    </strong>
+  </h1>
+  <% if current_user.phone %>  
+    <h4 class="mt-4"><strong>Phone Number:</strong></h4>
+    <p><%= current_user.phone.cellphone %></p>
   <% end %>
-  's Profile</strong></h1>
-  <h4 class="mt-4"><strong>Phone Number:</strong></h4>
-  <p><%= current_user.phone.cellphone %></p>
-  <h4><strong>About:</strong></h4>
-  <p><%= current_user.about.about_user %></p>
 
-
-
+  <% if current_user.about %>  
+    <h4><strong>About:</strong></h4>
+    <p><%= current_user.about.about_user %></p>
+  <% end %>
 </div>

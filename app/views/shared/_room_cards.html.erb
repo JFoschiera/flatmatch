@@ -14,7 +14,7 @@
           <%= link_to "Show more", room_url(room) %>
         </div>
         <div>
-          <% if (room.user.answers && room.user.answers.length) && (current_user.answers && current_user.answers.length) %>
+          <% if (room.user.answers && room.user.answers.length > 0) && (current_user.answers && current_user.answers.length > 0) %>
             <% result = 0 %>
             <% room.user.answers.each_with_index do |answer, index| %>
               <% current_score = current_user.answers[index].score %>
