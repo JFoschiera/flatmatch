@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :avatar
   has_many :answers
+  has_many :likes
   has_many :rooms, dependent: :destroy
   has_one :about
   has_one :phone
