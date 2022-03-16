@@ -1,34 +1,42 @@
-<div class="mt-5">
-  <h1 class="text-center fw-bold">Flatmatch</h1>
+<div class="new-user">
+  <h1 class="text-center fw-bold">FlatMatch</h1>
   <div class="container">
     <div class="row">
-      <div class="col py-3 px-5">
+      <div class="col px-5">
         <p class="text-center mt-4 fw-lighter">By clicking Log In, you agree to our Terms. Learn how we process your
           data in our Privicy Policy and Cookie Policy.</p style="font-size: 12px">
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
+                placeholder: 'Email',
+                label:false,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
+          <div class="mb-2"></div>
           <%= f.input :password,
+                placeholder: 'Password',
+                label:false,
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Log in", class: "btn btn-secondary py-3 rounded-pill btn-block mb-4 mt-4", style: "width: 100%" %>
+          <%= f.button :submit, "Log in", class: "btn btn-secondary py-3 rounded-pill", id: "home-button" %>
         </div>
         <% end %>
 
-        <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post,  class: "btn btn-secondary py-3 rounded-pill btn-block mb-4", style: "width: 100%" %><br />
-        <% end %>
 
       </div>
     </div>
   </div>
 </div>
+</div>
+
+<div class="sign-up">
+        <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post,  class: "btn btn-secondary py-3 rounded-pill btn-sign-up mt-3", style: "width: 65%" %><br />
+        <% end %>
 </div>

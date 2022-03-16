@@ -1,10 +1,4 @@
-// Specific CSS for your home-page
-body {
-  background-color: #fff;
-}
-
-
-.my-home {
+.new-user {
   background-color: #161616;
   height: 80vh;
   border-radius: 0 0 50px 50px;
@@ -13,23 +7,24 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  color:#fff;
 
-    h1 {
-      color: #ed3b5a;
-      font-size: 55px;
-      font-weight: 700;
-      font-family: 'Montserrat Alternates', sans-serif;
-    }
-
-    p{
-      font-size: 18px;
-      color: #fff;
-      font-weight: 500;
-    }
+  p{
+    font-size: 18px;
+    color: #161616;
+    font-weight: 500;
   }
 
+  h1 {
+    color: #ed3b5a;
+    font-size: 55px;
+    font-weight: 700;
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+}
 
-  .buttons-home {
+
+.buttons-home {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -41,7 +36,7 @@ body {
   background-color: #ed3b5a;
   color: #fff;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   position: absolute;
   display: block;
   bottom: -34px;
@@ -56,11 +51,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   .btn-sign-up {
-    color: #ed3b5a;
+    background-color: #137e8f;
+    color: #fff;
     text-decoration: none;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    border: 7px solid #fff;
   }
 }
