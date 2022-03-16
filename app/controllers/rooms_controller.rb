@@ -13,6 +13,14 @@ class RoomsController < ApplicationController
       @rooms = Room.all
       set_markers
     end
+
+    @markers = @rooms.geocoded.map do |room|
+      {
+        lat: room.latitude,
+        lng: room.longitude,
+        info_window: render_to_string(partial: "shared/info_window", locals: { room: room })
+      }
+    end
   end
 
   def show
