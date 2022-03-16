@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'about', to: 'devise/sessions#about'
     get 'phone', to: 'devise/sessions#phone'
     get 'profile', to: 'devise/sessions#profile'
+    get 'my-rooms', to: 'devise/sessions#my_rooms'
   end
 
 
