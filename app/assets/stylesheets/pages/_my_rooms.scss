@@ -1,0 +1,19 @@
+.my-rooms {
+  margin-top: 6rem !important;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.rooms-title {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  margin-left: 5px;
+}
+
+.create-room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

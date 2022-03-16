@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_14_155552) do
+ActiveRecord::Schema.define(version: 2022_03_16_132943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,14 +71,14 @@ ActiveRecord::Schema.define(version: 2022_03_14_155552) do
     t.index ["user2_id"], name: "index_compatibilities_on_user2_id"
   end
 
-  create_table "matchs", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "like", default: false
-    t.index ["room_id"], name: "index_matchs_on_room_id"
-    t.index ["user_id"], name: "index_matchs_on_user_id"
+    t.boolean "confirm", default: false
+    t.index ["room_id"], name: "index_likes_on_room_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "phones", force: :cascade do |t|
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2022_03_14_155552) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "matchs", "rooms"
-  add_foreign_key "matchs", "users"
+  add_foreign_key "likes", "rooms"
+  add_foreign_key "likes", "users"
   add_foreign_key "phones", "users"
 end
