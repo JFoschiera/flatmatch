@@ -16,13 +16,15 @@
       's Profile
     </strong>
   </h1>
-  <% if current_user.phone %>  
+  <% if current_user.phone %>
     <h4 class="mt-4"><strong>Phone Number:</strong></h4>
     <p><%= current_user.phone.cellphone %></p>
   <% end %>
 
-  <% if current_user.about %>  
+  <% if current_user.about %>
     <h4><strong>About:</strong></h4>
     <p><%= current_user.about.about_user %></p>
   <% end %>
+
+ <%= link_to "Edit your answers?", new_answer_path, method: :delete, class: 'btn btn-primary' %>
 </div>

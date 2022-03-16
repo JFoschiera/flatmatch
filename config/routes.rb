@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :abouts, only: [:new, :create]
-  resources :answers, only: [:index, :show, :new, :create]
+  resources :answers, only: [:new, :create, :show, :index, :destroy]
   resources :phones, only: [:new, :create]
 end
