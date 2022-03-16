@@ -1,8 +1,10 @@
 
-    <div>
-      <h2 class="my-5 ml-2">My Rooms</h2>
-      <div class="create-room">
-        <%= link_to "Offer a Room", new_room_path, class: 'btn btn-primary' %>
+    <div class="container my_rooms">
+      <div class="rooms-title">
+        <h2 class="my-5 ml-2">My Rooms</h2>
+        <div class="create-room">
+          <%= link_to "Offer a Room", new_room_path, class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
 
@@ -45,6 +47,10 @@
                     <p><strong>Location:</strong> <%= room.address %></p>
                     <p><strong>Price: </strong>R$<%= sprintf("%.2f", room.price) %></p>
                     <p><%= room.description %></p>
+                    <%# <%= link_to "Rented", my_rooms_path, %>
+                        <%# method: :delete, %>
+                        <%# data: { confirm: "Room is rented?" } %>
+                    <%# %>
                   </div>
                 </div>
               </div>
