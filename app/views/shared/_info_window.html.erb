@@ -3,11 +3,7 @@
 <div class="mt-3">
 
  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
+
   <div class="carousel-inner">
 
   <% if room.photos.attached? %>
@@ -34,3 +30,22 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<div>
+  <p><strong> <%= room.address %> </strong></p>
+  <p> <strong> Availability from: <%= room.start_date %> </strong> </p>
+  <p>price: <%= room.price %> </p>
+  <%= link_to "Show more", room_url(room) %>
+  </div>
+
+          <% if (room.user.answers && room.user.answers.length > 0) && (current_user.answers && current_user.answers.length > 0) %>
+          <% result = 0 %>
+          <% room.user.answers.each_with_index do |answer, index| %>
+            <% current_score = current_user.answers[index].score %>
+            <% answer_score = answer.score %>
+            <% difference = (current_score - answer_score).abs %>
+            <% result += difference %>
+          <% end %>
+          <% compatibility = 100 - result %>
+        <% end %>
+          <p class="badge rounded-pill bg-secondary compatibility"><%= compatibility %>% </p>
