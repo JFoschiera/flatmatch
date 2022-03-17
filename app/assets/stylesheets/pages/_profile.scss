@@ -1,7 +1,13 @@
 .name-pic {
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #fff;
+  color: #ed3b5a;
+  border: 2px solid #ed3b5a
 
   h1 {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 800;
   }
 }
 
@@ -10,8 +16,26 @@
   h4 {
     font-size: 14px;
   }
+}
 
-  th {
-    font-size: 14px;
+
+.question-description {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.answer-description {
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.choice {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.questions {
+  p {
+    margin-top: -15px;
   }
 }
