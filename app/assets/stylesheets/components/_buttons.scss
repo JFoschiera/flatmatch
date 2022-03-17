@@ -22,7 +22,6 @@
   border-radius: 50px;
 }
 
-
 .btn-face {
   background-color: #137e8f;
   color: #fff;
@@ -36,8 +35,26 @@
 
 #about-button {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 140px;
+  right: 157px;
+  border: 5px solid #fff;
+  background-color: #fff;
+}
+
+#question-button {
+  position: fixed;
+  bottom: 168px;
+  left: 42%;
+  border: 5px solid #fff;
+  background-color: #fff;
+}
+
+#phone-button {
+  position: fixed;
+  bottom: 135px;
+  left: 42%;
+  border: 5px solid #fff;
+  background-color: #fff;
 }
 
 .btn-message {
