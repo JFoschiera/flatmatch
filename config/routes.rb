@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
   
-  get 'people/:id', to: 'people#show', as: 'user_profile'
+  get 'people/:id/like/:like_id', to: 'people#show', as: 'user_profile'
 
   devise_scope :user do
     get 'about', to: 'devise/sessions#about'

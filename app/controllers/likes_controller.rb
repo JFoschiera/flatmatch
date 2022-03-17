@@ -25,6 +25,14 @@ class LikesController < ApplicationController
     end
   end
 
+  def update
+    @like = Like.find(params[:id].to_i)
+    @like.confirm = true
+    @like.save
+  end
+
+  private
+
   def set_room
     @room = Room.find(params[:room_id].to_i)
   end

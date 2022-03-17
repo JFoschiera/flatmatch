@@ -33,21 +33,17 @@
         <small><%= answer.question.answer_description %></small>
       </p>
       <div class="d-flex justify-content-between">
-      
         <% if @person.first_name %>
           <small><strong><%= @person.first_name %>'s rating: </strong><%= answer.score %></small>
         <% else %>
           <small><strong><%= @person.name %>'s rating: </strong><%= answer.score %></small>
         <% end %>
-          
-        <small><strong>Your's rating: </strong>
-        
-        </small>
+        <small><strong>Your rating: </strong><%= current_user.answers[index].score %></small>
       </div>
     </div>
   <% end %>
   <div class="match-button">
-    <%= link_to new_user_session_path, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
+    <%= link_to room_like_path(@like.room, @like), method: :patch, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
       <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
     <% end %>
   </div>
