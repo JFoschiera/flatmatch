@@ -60,10 +60,29 @@
   font-weight: bolder;
 }
 
+// LIKED and DISLIKED -- Heart -- Percentage
+
 .card-trip a.card-heart {
   text-decoration: none;
   font-size: 18px;
   opacity: 1 !important;
   color: transparent !important;
   margin: 0;
+}
+
+.compatibility {
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #ed3b5a;
+}
+
+.disliked {
+  color: #DBDBDB !important;
+}
+
+.liked {
+  color: #ed3b5a !important;
 }
