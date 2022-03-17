@@ -1,5 +1,9 @@
-<small>
-  <strong><%= message.user.name %></strong>
-  <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-</small>
-<p><%= message.content %></p>
+<div>
+  <small>
+    <strong><%= message.user.name %></strong>
+  </small>
+    <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;"><%= message.content %></p>
+  <small>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+</div>
