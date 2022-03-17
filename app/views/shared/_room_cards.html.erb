@@ -51,7 +51,7 @@
               <% difference = (current_score - answer_score).abs %>
               <% result += difference %>
             <% end %>
-            <span class="badge rounded-pill bg-secondary compatibility"><%= 100 - result %>%</span>
+            <span class="badge rounded-pill compatibility", style="background-color: #ed3b5a"><%= 100 - result %>%</span>
           <% end %>
           <h2 class="card-trip-pricing">R$<%= sprintf("%.2f", room.price) %></h2>
           <% if room.user.avatar.attached? %>
