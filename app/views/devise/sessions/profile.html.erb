@@ -1,30 +1,69 @@
 <div class="container mt-3 mx-2">
+<div class="name-pic d-flex justify-content-center align-items-center">
+
+
   <% if current_user.facebook_picture_url %>
     <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-  <% elsif current_user.avatar.attached? %>
-    <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-  <% else %>
-    <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
-  <% end %>
-  <h1 class="mt-4">
-    <strong>
-      <% if current_user.first_name %>
-        <%= current_user.first_name %>
-      <% else %>
-        <%= current_user.name %>
-      <% end %>
-      's Profile
-    </strong>
-  </h1>
-  <% if current_user.phone %>
-    <h4 class="mt-4"><strong>Phone Number:</strong></h4>
-    <p><%= current_user.phone.cellphone %></p>
-  <% end %>
+    <% elsif current_user.avatar.attached? %>
+      <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% else %>
+      <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
+    <% end %>
+    <h1 class="mx-3">
+      <strong>
+        <% if current_user.first_name %>
+          <%= current_user.first_name %>
+        <% else %>
+          <%= current_user.name %>
+        <% end %>
+        's Profile
+      </strong>
+    </h1>
 
+  </div>
+
+<div class="container mt-5">
+<div class="other-info">
   <% if current_user.about %>
     <h4><strong>About:</strong></h4>
     <p><%= current_user.about.about_user %></p>
   <% end %>
 
+  <% if current_user.phone %>
+    <h4 class="mt-4"><strong>Phone Number:</strong></h4>
+    <p><%= current_user.phone.cellphone %></p>
+  <% end %>
+
+  <% if current_user.email %>
+  <h4 class="mt-4"><strong>Email:</strong></h4>
+  <p><%= current_user.email %></p>
+  <% end %>
+
+<table class="table table-sm table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Score</th>
+      <th scope="col">Question</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <% if current_user.answers %>
+  <h4 class="mt-4"><strong>Answers:</strong></h4>
+  <% current_user.answers.each do |answer| %>
+    <td> <%= answer.score %> </td>
+    <td> <%= answer.question.question_description %> </td>
+    </tr>
+    </tbody>
+
+</div>
+  <% end %>
+  <% end %>
+
+
+</div>
+</div></div></div>
+
+<div class="container">
  <%= link_to "Edit your answers?", new_answer_path, method: :delete, class: 'btn btn-primary' %>
 </div>
