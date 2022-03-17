@@ -7,4 +7,21 @@
 #search-button {
   border-radius: 0 50px 50px 0;
   background-color: #ed3b5a;
+  font-weight: 600;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 13px;
+    line-height: 3;
+}
+
+.my-form-style {
+  border-radius: 50px;
+}
+
+#phone-input {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

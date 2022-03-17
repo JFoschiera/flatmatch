@@ -30,7 +30,12 @@
   font-weight: 700;
   font-size: 16px;
   display: block;
-  width: 100%;
   border: 7px solid #fff;
   border-radius: 50px;
+}
+
+#about-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
 }
