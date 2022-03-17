@@ -18,6 +18,8 @@ class LikesController < ApplicationController
     previous = request.referrer
     if previous.include?(room_path(@room.id))
       redirect_to room_path(@room.id)
+    elsif previous.include?("my-rooms")
+      redirect_to my_rooms_path
     else
       redirect_to rooms_path(anchor: "resize-cards-#{@room.id}")
     end
