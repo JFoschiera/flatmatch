@@ -1,12 +1,12 @@
 <div class="mt-5">
-  <h1 class="text-center">Flatmatch</h1>
   <div class="container">
     <div class="row" data-controller="questions" >
+  <div class="my-3"></div>
       <% @questions.each_with_index do |question, index| %>
         <div id="question-<%= index %>" class=" <%= "d-none" unless index.zero? %> col py-3">
-          <div class="card-container my-5 mx-3 py-5 px-5">
-            <div class="bg-white question py-2 px-2 mb-3" style="height: 26vh">
-              <p><strong><%= question.question_description %></strong></p>
+          <div class="card-container  mx-3 py-3 px-3">
+            <div class="bg-white question py-4 px-4 mb-1" style="height: 26vh">
+              <p style="font-size: 18px;"><strong><%= question.question_description %></strong></p>
               <p style="font-size: 12px; margin-top: -10px"><%= question.answer_description.partition('10').first %></p>
               <p style="font-size: 12px; margin-top: -10px">10 <%= question.answer_description.partition('10 ').last %></p>
             </div>
@@ -15,20 +15,21 @@
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
               <div class="form-inputs">
+              <div class="my-5"></div>
                 <%= f.range_field :score, :in => 0..10, :step => 1, class: 'w-100 form-range', id: 'customRange' %>
                 <%= f.input :question_id, as: :hidden, input_html: { value: question.id } %>
               </div>
               <div class="d-flex justify-content-between">
                 <div>
-                <p>0</p>
+                <p style="color: #fff; font-weight: 800">0</p>
                 </div>
                 <div>
-                <p>10</p>
+                <p style="color: #fff; font-weight: 800">10</p>
                 </div>
               </div>
-              <div class="form-actions" style="text-align: right" data-controller="disable-button">
+              <div class="form-actions" style="text-align: right;" data-controller="disable-button">
                 <%= button_tag type: 'submit', class: "btn btn-transparent", data: { action: "click->questions#next disable-button#disable", question: index } do %>
-                  <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-circle-right" style="color: #ed3b5a" id="question-button" aria-hidden="true"></i>
                 <% end %>
               </div>
             <% end %>
