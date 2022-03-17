@@ -37,6 +37,6 @@
 
 <div class="sign-up">
         <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post,  class: "btn btn-secondary py-3 rounded-pill btn-sign-up mt-3", style: "width: 65%" %><br />
+        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post,  class: "btn btn-secondary py-3 rounded-pill btn-face mt-3", style: "width: 65%" %><br />
         <% end %>
 </div>

@@ -10,7 +10,9 @@
 @import "mapbox-gl/dist/mapbox-gl";
 
 // Your CSS partials
+@import "components/buttons";
 @import "components/card";
+@import "components/form";
 @import "components/index";
 @import "components/map";
 @import "pages/index";

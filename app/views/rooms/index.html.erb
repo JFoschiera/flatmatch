@@ -3,13 +3,13 @@
     <%= form_tag "/rooms#map", method: :get do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control",
+      class: "form-control my-search",
       placeholder: "Which city you need a room?"
     %>
   </div>
 
   <div class="search-button">
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-primary", id: "search-button" %>
     <% end %>
   </div>
 </div>
@@ -29,9 +29,3 @@
   </div>
 </div>
 <%= render "shared/room_cards", rooms: @rooms %>
-
-
-
-
-
-
