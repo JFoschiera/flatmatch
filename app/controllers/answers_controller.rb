@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answers = Answer.where(user: current_user)
-    @answers.destroy_all
+    @answers.delete_all
     redirect_to new_answer_path
   end
 
