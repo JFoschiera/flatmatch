@@ -1,0 +1,58 @@
+#main-button {
+  background-color: #ed3b5a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  position: absolute;
+  display: block;
+  bottom: -34px;
+  width: 65%;
+  right: 18%;
+  border: 7px solid #fff;
+}
+
+.main-button {
+  background-color: #ed3b5a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  display: block;
+  width: 65%;
+  border: 7px solid #fff;
+  border-radius: 50px;
+}
+
+.btn-face {
+  background-color: #137e8f;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  display: block;
+  border: 7px solid #fff;
+  border-radius: 50px;
+}
+
+#about-button {
+  position: fixed;
+  bottom: 140px;
+  right: 157px;
+  border: 5px solid #fff;
+  background-color: #fff;
+}
+
+#question-button {
+  position: fixed;
+  bottom: 168px;
+  left: 42%;
+  border: 5px solid #fff;
+  background-color: #fff;
+}
+
+#phone-button {
+  position: fixed;
+  bottom: 135px;
+  left: 42%;
+  border: 5px solid #fff;
+  background-color: #fff;
+}

@@ -1,14 +1,18 @@
-<div class="mt-5">
-  <h1 class="text-center fw-bold">Flatmatch</h1>
+<div class="my-home">
+  <h1 class="text-center fw-bold">FlatMatch</h1>
   <div class="container">
     <div class="row">
       <div class="col py-3 px-5">
-        <p class="text-center mt-4 fw-lighter">Connecting people around <br>the world and finding the<br> ideal flatmatch.</p>
-        <div class="buttons-home">
-          <%= link_to "LOG IN", new_user_session_path, class: "btn btn-secondary py-3 rounded-pill" %>
-          <%= link_to "CREATE ACCOUNT", new_user_registration_path, class: "btn btn-secondary py-3 rounded-pill" %>
-        </div>
+        <p class="text-center mt-4 fw-lighter">Connecting people around <br>the world and finding the<br> ideal
+          flatmatch.</p>
+
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary py-3 rounded-pill", id: "main-button" %>
+
       </div>
     </div>
   </div>
+</div>
+
+<div class="sign-up">
+  <%= link_to "Sign Up", new_user_registration_path, class: "btn-sign-up" %>
 </div>

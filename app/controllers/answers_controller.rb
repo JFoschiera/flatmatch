@@ -24,6 +24,12 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    @answers = Answer.where(user: current_user)
+    @answers.destroy_all
+    redirect_to new_answer_path
+  end
+
   def answer_params
     params.require(:answer).permit(
       :question_id,

@@ -1,26 +1,40 @@
-<div class="mt-5">
+
   <div class="container">
-    <h1 class="text-center">Flatmatch</h1>
     <div class="row">
-      <div class="col">
-        <div class="my-5 mx-3 py-5 px-5 text-center">
+        <div class="col text-center my-5" style="background-color: #fff;">
+          <div class="card-container my-5 mx-3 py-3 px-3" style="height: 85%; border-radius: 20px; background-color: #fff; ">
+
+
           <%= simple_form_for(@phone) do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+            <div class="my-5"></div>
+
             <div class="form-inputs">
-              <label for="cellphone" class="form-label mb-5 phone-label">Phone number: </label>
+              <label for="cellphone" style="color: #161616; font-weight: 600;">Phone number: </label>
+
+
               <div class="mt-5">
-                <%= f.telephone_field :cellphone, id: 'cellphone', type: "text", placeholder: "(DD) 99999-9999"  %>
+                <%= f.input :cellphone,
+                            id: 'cellphone',
+                            type: "text",
+                            label: false,
+                            placeholder: "(DD) 99999-9999",
+                            input_html: { class: "form-control my-form-style my-1" }  %>
               </div>
             </div>
-            <div class="form-actions" style="text-align: right;">
-              <%= button_tag type: 'submit', class: "btn btn-transparent submit" do %>
-                <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
-              <% end %>
-            </div>
-          <% end %>
+          </div>
+
+          <div class="form-actions" style="text-align: right;">
+          <div style="margin-top: 100px"></div>
+            <%= button_tag type: 'submit', class: "btn btn-transparent" do %>
+              <i style="color: #ed3b5a;" id="about-button" class="fas fa-chevron-circle-right" aria-hidden="true"></i>
+            <% end %>
+            <% end %>
+          </div>
+
         </div>
-      </div>
+
     </div>
   </div>
-</div>

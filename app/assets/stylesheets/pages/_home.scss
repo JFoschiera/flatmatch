@@ -1,9 +1,35 @@
 // Specific CSS for your home-page
-body { 
-  background-color: #DBDBDB;
+body {
+  background-color: #fff;
 }
 
-.buttons-home {
+
+.my-home {
+  background-color: #161616;
+  height: 80vh;
+  border-radius: 0 0 50px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+    h1 {
+      color: #ed3b5a;
+      font-size: 55px;
+      font-weight: 700;
+      font-family: 'Montserrat Alternates', sans-serif;
+    }
+
+    p{
+      font-size: 18px;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+
+
+  .buttons-home {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -11,6 +37,30 @@ body {
   font-weight: 200;
 }
 
-.description {
-  font-weight: lighter !important;
+#home-button {
+  background-color: #ed3b5a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+  position: absolute;
+  display: block;
+  bottom: -34px;
+  width: 65%;
+  right: 18%;
+  border: 7px solid #fff;
+
+}
+
+.sign-up {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .btn-sign-up {
+    color: #ed3b5a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 24px;
+  }
 }

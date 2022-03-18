@@ -1,25 +1,35 @@
 
 
 
-<div class="mt-5">
-  <h1 class="text-center">Flatmatch</h1>
   <div class="container">
     <div class="row">
+        <div class="col text-center" style="background-color: #fff;">
+          <div class="card-container my-5 mx-3 py-3 px-3" style="height: 85%; border-radius: 20px; background-color: #fff; ">
 
-        <div class="col py-3">
-          <div class="card-container my-5 mx-3 py-5 px-5" style="height: 85%">
+
+
             <%= simple_form_for(@about) do |f| %>
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
               <div class="form-inputs">
-                <%= f.input :about_user, placeholder: 'Where are you from? Yours hobbies, occupation, age. Which music you listen to? Your master dish. Be creative! :)', label:false, :input_html => { 'rows' => 11} %>
+              <label for="about_user" style="color: #161616; font-weight: 600;">About yourself: </label>
+
+
+                <div class="mb-3"></div>
+                <%= f.input :about_user, placeholder: 'Where are you from? Yours hobbies, occupation, age. Which music you listen to? Your master dish. Be creative! :)',
+                label:false,
+                input_html: { rows: 11, class: "my-form-style px-4 py-4" } %>
+
+
               </div>
             </div>
           </div>
           <div class="form-actions" style="text-align: right;">
-
+          <div style="margin-top: 100px"></div>
             <%= button_tag type: 'submit', class: "btn btn-transparent" do %>
-              <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
+              <i style="color: #ed3b5a;" id="about-button" class="fas fa-chevron-circle-right" aria-hidden="true"></i>
             <% end %>
             <% end %>
           </div>
@@ -28,4 +38,3 @@
 
     </div>
   </div>
-</div>
