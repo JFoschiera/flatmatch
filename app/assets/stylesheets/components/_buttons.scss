@@ -1,3 +1,7 @@
+.btn:disabled {
+  opacity: 1;
+}
+
 #main-button {
   background-color: #ed3b5a;
   color: #fff;
@@ -10,6 +14,7 @@
   right: 18%;
   border: 7px solid #fff;
 }
+
 
 .main-button {
   background-color: #ed3b5a;
@@ -33,33 +38,51 @@
   border-radius: 50px;
 }
 
+.about-btn-position{
+  position: relative;
+}
+
 #about-button {
-  position: fixed;
-  bottom: 140px;
-  right: 157px;
+  position: absolute;
+  bottom: -64px;
+  right: 112px;
   border: 5px solid #fff;
   background-color: #fff;
 }
 
 #question-button {
-  position: fixed;
-  bottom: 168px;
+  position: absolute;
+  bottom: -30px;
   left: 42%;
   border: 5px solid #fff;
   background-color: #fff;
 }
 
 #phone-button {
-  position: fixed;
-  bottom: 135px;
+  position: absolute;
+  bottom: -28;
   left: 42%;
   border: 5px solid #fff;
   background-color: #fff;
 }
 
 .btn-message {
-
     border-radius: 0 50px 50px 0;
     background-color: #ed3b5a;
     font-weight: 600;
+}
+
+
+.btn-sign-up {
+  color: #ed3b5a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+#btn-show-map {
+  color: #ed3b5a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
 }
