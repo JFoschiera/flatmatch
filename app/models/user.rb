@@ -3,11 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :avatar
   has_many :answers, dependent: :destroy
-  has_many :likes
   has_many :compatibilities
+  has_many :likes, dependent: :destroy
   has_many :rooms, dependent: :destroy
-  has_one :about
-  has_one :phone
+  has_one :about, dependent: :destroy
+  has_one :phone, dependent: :destroy
+  
   has_many :users1, class_name: "Compatibilities", foreign_key: "user1_id", dependent: :destroy
   has_many :users2, class_name: "Compatibilities", foreign_key: "user2_id", dependent: :destroy
 

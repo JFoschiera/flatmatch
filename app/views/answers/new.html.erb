@@ -5,6 +5,7 @@
       <% @questions.each_with_index do |question, index| %>
         <div id="question-<%= index %>" class=" <%= "d-none" unless index.zero? %> col py-3">
           <div class="card-container  mx-3 py-3 px-3">
+
             <div class="bg-white question py-4 px-4 mb-1" style="height: 26vh">
               <p style="font-size: 18px;"><strong><%= question.question_description %></strong></p>
               <p style="font-size: 12px; margin-top: -10px"><%= question.answer_description.partition('10').first %></p>
@@ -27,11 +28,13 @@
                 <p style="color: #fff; font-weight: 800">10</p>
                 </div>
               </div>
+
               <div class="form-actions" style="text-align: right;" data-controller="disable-button">
                 <%= button_tag type: 'submit', class: "btn btn-transparent", data: { action: "click->questions#next disable-button#disable", question: index } do %>
                   <i class="fas fa-chevron-circle-right" style="color: #ed3b5a" id="question-button" aria-hidden="true"></i>
                 <% end %>
               </div>
+              
             <% end %>
           </div>
         </div>

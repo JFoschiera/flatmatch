@@ -29,18 +29,28 @@
           <h2><%= room.address  %></h2>
           <p> <strong> <%= room.city %> </strong> </p>
           <p> <strong> <%= room.start_date %> </strong> </p>
+
+
+
           <span>
             <%= link_to "Show more", room_url(room) %>
+
+
             <% if room.likes && room.likes.where(user: current_user).length > 0 %>
-              <%= link_to room_like_path(room.id, room.likes.where(user: current_user).first.id), method: :delete, class: 'card-heart' do %>
+              <%= link_to room_like_path(room.id, room.likes.where(user: current_user).first.id), method: :delete, class: 'card-heart', remote: true do %>
                 <i class="fas fa-heart liked ms-1"></i>
               <% end %>
             <% else %>
-              <%= link_to room_likes_path(room.id), method: :post, class: 'card-heart' do %>
+              <%= link_to room_likes_path(room.id), method: :post, class: 'card-heart', remote: true do %>
                 <i class="fas fa-heart disliked ms-1"></i>
               <% end %>
             <% end %>
           </span>
+
+
+
+
+
         </div>
         <div>
           <span class="badge rounded-pill compatibility", style="background-color: #ed3b5a"><%= room.compatibility %>%</span>
