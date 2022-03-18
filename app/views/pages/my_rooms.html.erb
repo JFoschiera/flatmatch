@@ -1,3 +1,21 @@
+<div class="container">
+  <h2 class="my-5 ml-2">Matches</h2>
+  <% @compatibilities.each do |compatibility| %>
+    <div class="notification">
+      <% if compatibility.user1.avatar.attached? %>
+        <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "avatar.webp", class: "avatar-large"%>
+      <% end %>
+      <div class="notification-content">
+        <p><small><strong><%= compatibility.user1.name %></strong></small></p>
+        <p><small><%= compatibility.user1.about.about_user %></small></p>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
 <div class="container my_rooms">
   <div class="rooms-title">
     <h2 class="my-5 ml-2">My Rooms</h2>
@@ -55,13 +73,19 @@
                     <p>
                       <% if like.user.facebook_picture_url %>
                         <%= image_tag like.user.facebook_picture_url, class: "avatar-small dropdown-toggle" %>
-                        <%= like.user.first_name %>
+                        <%= link_to user_profile_path(like.user.id, like.id) do %>
+                          <%= like.user.first_name %>
+                        <% end %>
                       <% elsif like.user.avatar.attached? %>
                         <%= cl_image_tag like.user.avatar.key, class: "avatar-small dropdown-toggle" %>
-                        <%= like.user.name %>
+                        <%= link_to user_profile_path(like.user.id, like.id) do %>
+                          <%= like.user.name %>
+                        <% end %>
                       <% else %>
                         <%= image_tag "avatar.webp", class: "avatar-small dropdown-toggle"%>
-                        <%= like.user.name %>
+                        <%= link_to user_profile_path(like.user.id, like.id) do %>
+                          <%= like.user.name %>
+                        <% end %>
                       <% end %>
                     </p>
                   </div>

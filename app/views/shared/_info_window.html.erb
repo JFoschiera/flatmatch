@@ -37,15 +37,4 @@
   <p>price: <%= room.price %> </p>
   <%= link_to "Show more", room_url(room) %>
   </div>
-
-          <% if (room.user.answers && room.user.answers.length > 0) && (current_user.answers && current_user.answers.length > 0) %>
-          <% result = 0 %>
-          <% room.user.answers.each_with_index do |answer, index| %>
-            <% current_score = current_user.answers[index].score %>
-            <% answer_score = answer.score %>
-            <% difference = (current_score - answer_score).abs %>
-            <% result += difference %>
-          <% end %>
-          <% compatibility = 100 - result %>
-        <% end %>
-          <p class="badge rounded-pill bg-secondary compatibility"><%= compatibility %>% </p>
+  <p class="badge rounded-pill bg-secondary compatibility"><%= room.compatibility %>% </p>

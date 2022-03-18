@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_17_132641) do
+ActiveRecord::Schema.define(version: 2022_03_18_171252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2022_03_17_132641) do
   create_table "compatibilities", force: :cascade do |t|
     t.integer "user1_id"
     t.integer "user2_id"
-    t.integer "result"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user1_id"], name: "index_compatibilities_on_user1_id"
@@ -131,6 +130,7 @@ ActiveRecord::Schema.define(version: 2022_03_17_132641) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "user_id"
+    t.integer "compatibility", default: 0
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 

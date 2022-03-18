@@ -25,6 +25,8 @@ class LikesController < ApplicationController
     end
   end
 
+  private
+
   def set_room
     @room = Room.find(params[:room_id].to_i)
   end

@@ -66,12 +66,27 @@
   background-color: #fff;
 }
 
+#match-button {
+  background-color: #fff;
+  color: #ed3b5a;
+  font-weight: 700;
+  font-size: 18px;
+  display: block;
+  border: 5px solid #ed3b5a;
+  width: 50%;
+}
+
+.btn-message {
+  border-radius: 0 50px 50px 0;
+  background-color: #ed3b5a;
+  font-weight: 600;
+}
+
 .btn-message {
     border-radius: 0 50px 50px 0;
     background-color: #ed3b5a;
     font-weight: 600;
 }
-
 
 .btn-sign-up {
   color: #ed3b5a;
