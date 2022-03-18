@@ -46,7 +46,7 @@
 
     <% current_user.answers.each do |answer| %>
     <div class="questions" style="border-bottom: 1px solid #ed3b5a">
-      <p class="question-description mt-2"><%= answer.question.question_description %></p>
+      <p class="question-description mt-2" style="color: #137e8f; font-weight: 600;"><%= answer.question.question_description %></p>
       <p class="answer-description"><%= answer.question.answer_description.partition('10').first %></p>
       <p class="answer-description">10 <%= answer.question.answer_description.partition('10 ').last %></p>
       <p class="choice">Your ratting: <%= answer.score %></p>
