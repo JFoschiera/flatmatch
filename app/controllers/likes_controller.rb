@@ -25,11 +25,11 @@ class LikesController < ApplicationController
     end
   end
 
-  def update
-    @like = Like.find(params[:id].to_i)
-    @like.confirm = true
-    @like.save
-  end
+  # def update
+  #   @like = Like.find(params[:id].to_i)
+  #   @compatibility = Compatibility.new(user_1: @like.user, user_2: current_user, result: 0)
+  #   redirect_to my_rooms_path
+  # end
 
   private
 

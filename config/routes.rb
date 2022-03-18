@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :rooms do
-    resources :likes
+    resources :likes do
+      resources :compatibilities, only: [:create]
+    end
   end
 
   resources :abouts, only: [:new, :create]
