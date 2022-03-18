@@ -20,15 +20,11 @@ export default class extends Controller {
       thisStep.classList.add('d-none')
       nextStep.classList.remove('d-none')
     } else {
+      event.currentTarget.setAttribute("disabled", "")
       this.formTargets.forEach((form) => {
         Rails.fire(form, 'submit')
       })
     }
   }
-
-  disable() {
-    this.buttonTarget.setAttribute("disabled", "")
-  }
-
 
 }

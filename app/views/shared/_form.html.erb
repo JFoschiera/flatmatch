@@ -2,24 +2,59 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
-    <%= f.input :roommates, placeholder: 'How many people live in the house?' %>
-    <%= f.input :size, placeholder: 'In meters square' %>
-    <%= f.input :address %>
-    <%= f.input :city %>
+    <%= f.input :roommates,
+                label:false,
+                placeholder: 'How many people live in the house?',
+                input_html: { class: "my-form-style my-3" } %>
+    <%= f.input :size,
+                label:false,
+                placeholder: 'In meters square',
+                input_html: { class: "my-form-style my-3" } %>
+    <%= f.input :address,
+                label:false,
+                placeholder: 'Address',
+                input_html: { class: "my-form-style my-3" } %>
+    <%= f.input :city,
+                label:false,
+                placeholder: 'City',
+                input_html: { class: "my-form-style my-3" } %>
     <%= f.input :start_date, as: :date, html5: true %>
     <%= f.input :end_date, as: :date, html5: true %>
-    <%= f.input :pets, collection: Room::PETSPER %>
-    <%= f.input :smoking, collection: Room::SMOKEPER %>
-    <%= f.input :visitors, collection: Room::VISITPER %>
-    <%= f.input :description, placeholder: 'Tell the comunity a bit about the co living in the house.' %>
-    <%= f.input :floor %>
-    <%= f.input :price %>
-    <%= f.input :utilities,collection: Room::UTILIPER %>
+    <%= f.input :pets,
+                placeholder: 'Choose an option',
+                collection: Room::PETSPER,
+                input_html: { class: "my-form-style" } %>
+    <%= f.input :smoking,
+                placeholder: 'Choose an option',
+                collection: Room::SMOKEPER,
+                input_html: { class: "my-form-style" } %>
+    <%= f.input :visitors,
+                placeholder: 'Choose an option',
+                collection: Room::VISITPER,
+                input_html: { class: "my-form-style" } %>
+    <%= f.input :description,
+                placeholder: 'Tell the comunity a bit about the co living in the house.',
+                input_html: {
+                  rows: 5,
+                  class: "my-form-style px-4 py-4" } %>
+    <%= f.input :floor,
+                placeholder: 'Which floor?',
+                label:false,
+                input_html: { class: "my-form-style my-3" } %>
+    <%= f.input :price,
+                placeholder: 'Price',
+                label:false,
+                input_html: { class: "my-form-style my-3" } %>
+    <%= f.input :utilities,
+                collection: Room::UTILIPER,
+                input_html: { class: "my-form-style" }  %>
     <br>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :photos,
+                as: :file,
+                input_html: { multiple: true } %>
   </div>
   <div class="form-actions mt-3" style="padding-bottom: 30px">
-    <%= f.button :submit, class: 'btn btn-outline-dark' %>
+    <%= f.button :submit, class: 'btn btn-face' %>
     </div>
   </div>
 </div>
