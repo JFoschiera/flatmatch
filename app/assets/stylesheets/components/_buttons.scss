@@ -2,6 +2,9 @@
   opacity: 1;
 }
 
+
+
+
 #main-button {
   background-color: #ed3b5a;
   color: #fff;
@@ -13,6 +16,19 @@
   width: 65%;
   right: 18%;
   border: 7px solid #fff;
+
+  &:active {
+  background-color: #ed3b5a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  position: absolute;
+  display: block;
+  bottom: -34px;
+  width: 65%;
+  right: 18%;
+  border: 7px solid #fff;
+  }
 }
 
 
@@ -25,6 +41,19 @@
   width: 65%;
   border: 7px solid #fff;
   border-radius: 50px;
+
+  &:active {
+    background-color: #ed3b5a;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    position: absolute;
+    display: block;
+    bottom: -34px;
+    width: 65%;
+    right: 18%;
+    border: 7px solid #fff;
+    }
 }
 
 .btn-face {
@@ -36,6 +65,18 @@
   display: block;
   border: 7px solid #fff;
   border-radius: 50px;
+
+  &:active {
+    background-color: #137e8f;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    display: block;
+    border: 7px solid #fff;
+    border-radius: 50px;
+
+    }
 }
 
 .about-btn-position{

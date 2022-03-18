@@ -18,8 +18,10 @@
                 label:false,
                 placeholder: 'City',
                 input_html: { class: "my-form-style my-3" } %>
-    <%= f.input :start_date, as: :date, html5: true %>
-    <%= f.input :end_date, as: :date, html5: true %>
+    <%= f.input :start_date, as: :date, html5: true,
+                input_html: { class: "my-form-style my-3" } %>
+    <%= f.input :end_date, as: :date, html5: true,
+                input_html: { class: "my-form-style my-3" } %>
     <%= f.input :pets,
                 placeholder: 'Choose an option',
                 collection: Room::PETSPER,
