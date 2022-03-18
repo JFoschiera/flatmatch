@@ -1,3 +1,7 @@
+.btn:disabled {
+  opacity: 1;
+}
+
 #main-button {
   background-color: #ed3b5a;
   color: #fff;
@@ -9,10 +13,6 @@
   width: 65%;
   right: 18%;
   border: 7px solid #fff;
-
-  :disabled{
-    opacity: 1;
-  }
 }
 
 
@@ -25,10 +25,6 @@
   width: 65%;
   border: 7px solid #fff;
   border-radius: 50px;
-
-  :disabled{
-    opacity: 1;
-  }
 }
 
 .btn-face {
@@ -74,4 +70,19 @@
     border-radius: 0 50px 50px 0;
     background-color: #ed3b5a;
     font-weight: 600;
+}
+
+
+.btn-sign-up {
+  color: #ed3b5a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+#btn-show-map {
+  color: #ed3b5a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
 }
