@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 2022_03_17_174209) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "compatibilities", force: :cascade do |t|
     t.integer "user1_id"
     t.integer "user2_id"
@@ -79,6 +85,16 @@ ActiveRecord::Schema.define(version: 2022_03_17_174209) do
     t.boolean "confirm", default: false
     t.index ["room_id"], name: "index_likes_on_room_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "phones", force: :cascade do |t|
@@ -146,5 +162,7 @@ ActiveRecord::Schema.define(version: 2022_03_17_174209) do
   add_foreign_key "answers", "users"
   add_foreign_key "likes", "rooms"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "phones", "users"
 end
