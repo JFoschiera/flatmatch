@@ -6,8 +6,8 @@
     <%= f.input :size, placeholder: 'In meters square' %>
     <%= f.input :address %>
     <%= f.input :city %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
     <%= f.input :pets, collection: Room::PETSPER %>
     <%= f.input :smoking, collection: Room::SMOKEPER %>
     <%= f.input :visitors, collection: Room::VISITPER %>
