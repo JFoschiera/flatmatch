@@ -7,10 +7,14 @@
 
 .avatar-small {
   width: 30px;
+  height: 30px;
+  object-fit: cover;
   border-radius: 50%;
 }
 .avatar-large {
   width: 56px;
+  height: 56px;
+  object-fit: cover;
   border-radius: 50%;
 }
 .avatar-bordered {

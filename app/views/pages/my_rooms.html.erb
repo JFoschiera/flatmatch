@@ -1,6 +1,19 @@
 <div class="container">
-  <h2 class="my-5 ml-2">Matchs</h2>
-  
+  <h2 class="my-5 ml-2">Matches</h2>
+  <% @compatibilities.each do |compatibility| %>
+    <div class="notification">
+      <% if compatibility.user1.avatar.attached? %>
+        <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "avatar.webp", class: "avatar-large"%>
+      <% end %>
+      <div class="notification-content">
+        <p><small><strong><%= compatibility.user1.name %></strong></small></p>
+        <p><small><%= compatibility.user1.about.about_user %></small></p>
+      </div>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="container my_rooms">

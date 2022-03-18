@@ -43,7 +43,7 @@
     </div>
   <% end %>
   <div class="match-button">
-    <%= link_to room_like_compatibilities(@like.room, @like), class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
+    <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
       <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
     <% end %>
   </div>

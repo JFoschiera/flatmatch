@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :answers, dependent: :destroy
   has_many :likes
+  has_many :compatibilities
   has_many :rooms, dependent: :destroy
   has_one :about
   has_one :phone

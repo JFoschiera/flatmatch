@@ -1,7 +1,9 @@
 class CompatibilitiesController < ApplicationController
   def create
-    @like = Like.find(params[:id].to_i)
-    @compatibility = Compatibility.new(user_1: @like.user, user_2: current_user, result: 0)
+    @like = Like.find(params[:like_id].to_i)
+    @compatibility = Compatibility.new(user1: @like.user, user2: current_user)
+    @compatibility.save
+
     redirect_to my_rooms_path
   end
 end
