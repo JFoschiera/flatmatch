@@ -1,34 +1,42 @@
-<section style="background-color: #eee;">
-  <div class="container py-5">
+<section>
+  <div class="container py-3">
 
     <div class="row d-flex justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-6">
 
-        <div class="container chatroom"
+        <div class="mx-1 chatroom"
           data-controller="chatroom-subscription"
           data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
         >
-            <div class="card-header p-1 mb-3 rounded-pill" style="background-color: #3440eb;">
-                <h1 class="align-items-center"><%= @chatroom.name %></h1>
-            </div>
+
+                <h1 class="align-items-center btn-sign-up">Messages</h1>
+
 
               <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
-                    <div class="messages" data-chatroom-subscription-target="messages">
-                      <% @chatroom.messages.each do |message| %>
-                        <%= render "messages/message", message: message %>
-                      <% end %>
-                    </div>
-                    <div class="card-footer text-muted d-flex justify-content-start align-items-center p-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3"
-                        style="width: 40px; height: 100%;">
-                      <%= simple_form_for [@chatroom, @message],
-                        remote: true,
-                        html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
-                      %>
-                        <%= f.input :content, label: false, placeholder: "Say Hello", wrapper_html: {class: "flex-grow-1"} %>
-                        <%= f.submit "Send", class: "btn-message btn-primary" %>
-                      <% end %>
-                    </div>
+                <div class="messages" data-chatroom-subscription-target="messages">
+                  <% @chatroom.messages.each do |message| %>
+                    <%= render "messages/message", message: message %>
+                  <% end %>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-start align-items-center p-2">
+
+
+                    <% if current_user.facebook_picture_url %>
+                    <%= image_tag current_user.facebook_picture_url, class: "avatar me-2 dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% elsif current_user.avatar.attached? %>
+                      <%= cl_image_tag current_user.avatar.key, class: "avatar me-2 dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% else %>
+                      <%= image_tag "avatar.webp", class: "avatar dropdown-toggle me-2 pr-2", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
+                    <% end %>
+                  <%= simple_form_for [@chatroom, @message],
+                    remote: true,
+                    html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
+                  %>
+                    <%= f.input :content, label: false, placeholder: "...",
+                    wrapper_html: { class: 'form-control my-search', id: 'chat-input' } %>
+                    <%= f.submit "Send", class: "btn btn-primary", id: "search-button" %>
+                  <% end %>
+                </div>
               </div>
         </div>
       </div>

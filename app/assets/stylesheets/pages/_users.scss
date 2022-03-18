@@ -19,3 +19,15 @@
 .form-actions btn {
   margin: 20px;
 }
+
+.solve-decoration {
+  display: flex;
+  justify-content: around;
+
+
+  a {
+    text-decoration: none;
+    color: #137e8f;
+    font-weight: 600;
+  }
+}

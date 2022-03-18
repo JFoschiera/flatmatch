@@ -1,9 +1,10 @@
 <div>
-  <small>
-    <strong><%= message.user.name %></strong>
+  <small style="color: #137e8f;">
+    <strong><%= message.user.name %></strong><%= message.created_at.strftime(" on %b %e at %l:%M %p") %>
   </small>
-    <p class="small p-2 ms-3 mb-2 rounded-pill" style="background-color: #f0520a;"><%= message.content %></p>
-  <small>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
+
+  <div class="message-box">
+    <p class="small p-2 ms-3 mb-2 rounded-pill message-text"><%= message.content %></p>
+  </div>
+
 </div>
