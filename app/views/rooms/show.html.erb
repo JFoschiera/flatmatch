@@ -31,21 +31,12 @@
     <div class="show-body mb-5 py-2">
       <div class="my-container">
         <div class="container row mt-5">
-          <p><strong>Location:</strong> <%= @room.address %></p>
+          <p><strong>Location: </strong> <%= @room.address %></p>
           <p><strong>Price: </strong>R$<%= sprintf("%.2f", @room.price) %></p>
-          <p><%= @room.description %></p>
+          <p><strong>Description: </strong><%= @room.description %></p>
           <div class="d-flex justify-content-between">
             <div>
-              <% if (@room.user.answers && @room.user.answers.length > 0) && (current_user.answers && current_user.answers.length > 0) %>
-                <% result = 0 %>
-                <% @room.user.answers.each_with_index do |answer, index| %>
-                  <% current_score = current_user.answers[index].score %>
-                  <% answer_score = answer.score %>
-                  <% difference = (current_score - answer_score).abs %>
-                  <% result += difference %>
-                <% end %>
-                <span class="badge rounded-pill bg-secondary compatibility-show"><%= 100 - result %>%</span>
-              <% end %>
+              <span class="badge rounded-pill compatibility-show" style="background-color: #ed3b5a"><%= @room.compatibility %>%</span>
             </div>
             <div>
               <% if @room.likes && @room.likes.where(user: current_user).length > 0 %>
@@ -63,7 +54,7 @@
       </div>
     </div>
     <div>
-      <h4><%= link_to "Back", rooms_path, class: "btn btn-secondary py-2 btn-block", style: "width: 20%" %></h4>
+      <h4><%= link_to "Back", rooms_path, class: "btn btn-face py-2 btn-block ms-3", style: "width: 20%" %></h4>
     </div>
   </div>
 </div>

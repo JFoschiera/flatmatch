@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,4 +16,19 @@ h5 {
   color: #ed3b5a;
   font-weight: 700;
   font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.dropdown-item {
+  &:active {
+    background-color: #fff !important;
+    color: #212529 !important;
+  }
+  &:focus {
+    background-color: #fff !important;
+    color: #212529 !important;
+  }
+  &:hover {
+    background-color: #fff !important;
+    color: #212529 !important;
+  }
 }
