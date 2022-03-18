@@ -24,6 +24,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    set_compatibility(@room)
     @photos = @room.photos
   end
 

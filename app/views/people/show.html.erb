@@ -29,7 +29,7 @@
   <% @person.answers.each_with_index do |answer, index| %>
     <div class="answer-border mb-4"> 
       <p>
-        <strong><%= answer.question.question_description %></strong><br>
+        <span class="color: #137e8f"><strong><%= answer.question.question_description %></strong></span><br>
         <small><%= answer.question.answer_description %></small>
       </p>
       <div class="d-flex justify-content-between">
@@ -38,7 +38,7 @@
         <% else %>
           <small><strong><%= @person.name %>'s rating: </strong><%= answer.score %></small>
         <% end %>
-        <small><strong>Your rating: </strong><%= current_user.answers[index].score %></small>
+        <small class="pt-3"><strong>Your rating: </strong style="ps-2"><%= current_user.answers[index].score %></small>
       </div>
     </div>
   <% end %>

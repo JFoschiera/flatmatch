@@ -28,7 +28,7 @@
         <div>
           <h2><%= room.address  %></h2>
           <p> <strong> <%= room.city %> </strong> </p>
-          <p> <strong> <%= room.start_date %> </strong> </p>
+          <p class="mt-2"> <strong> <%= room.start_date.strftime('%dth %B') %> </strong> </p>
 
 
 
@@ -46,11 +46,6 @@
               <% end %>
             <% end %>
           </span>
-
-
-
-
-
         </div>
         <div>
           <span class="badge rounded-pill compatibility", style="background-color: #ed3b5a"><%= room.compatibility %>%</span>

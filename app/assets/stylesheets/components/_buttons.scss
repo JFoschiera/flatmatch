@@ -36,6 +36,15 @@
   display: block;
   border: 7px solid #fff;
   border-radius: 50px;
+  &:active {
+    color: #fff !important;
+  }
+  &:focus {
+    color: #fff !important;
+  }
+  &:hover {
+    color: #fff !important;
+  }
 }
 
 .about-btn-position{
