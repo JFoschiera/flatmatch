@@ -1,9 +1,4 @@
 class RoomsController < ApplicationController
-  # def index
-  #   @rooms = Room.all
-  #   set_markers
-  # end
-
   def index
     @rooms = Room.all
     if params[:query].present?
@@ -20,6 +15,10 @@ class RoomsController < ApplicationController
         lng: room.longitude,
         info_window: render_to_string(partial: "shared/info_window", locals: { room: room })
       }
+    end
+
+    @rooms.each do |room|
+      set_compatibility(room)
     end
   end
 
@@ -61,6 +60,20 @@ class RoomsController < ApplicationController
     @room.destroy
 
     redirect_to rooms_path
+  end
+
+  def set_compatibility(room)
+    result = 0
+    if (room.user.answers && room.user.answers.length > 0) && (current_user.answers && current_user.answers.length > 0)
+      room.user.answers.each_with_index do |answer, index|
+        current_score = current_user.answers[index].score
+        answer_score = answer.score
+        difference = (current_score - answer_score).abs
+        result += difference
+      end
+    end
+    room.compatibility = 100 - result
+    room.save
   end
 
   private
