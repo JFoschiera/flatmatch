@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   resources :abouts, only: [:new, :create]
   resources :answers, only: [:new, :create, :show, :index, :destroy]
   resources :phones, only: [:new, :create]
+
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
 end
