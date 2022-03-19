@@ -18,16 +18,20 @@
   border: 7px solid #fff;
 
   &:active {
-  background-color: #ed3b5a !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  position: absolute !important;
-  display: block !important;
-  bottom: -34px !important;
-  width: 65% !important;
-  right: 18% !important;
-  border: 7px solid #fff !important;
+    background-color: #ed3b5a !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    display: block !important;
+    border: 7px solid #fff !important;
+  }
+  &:focus {
+    background-color: #ed3b5a !important;
+    color: #fff !important;
+  }
+  &:hover {
+    background-color: #ed3b5a !important;
+    color: #fff !important;
   }
 }
 
@@ -47,13 +51,17 @@
     color: #fff !important;
     font-weight: 700 !important;
     font-size: 20px !important;
-    position: absolute !important;
     display: block !important;
-    bottom: -34px !important;
-    width: 65% !important;
-    right: 18% !important;
     border: 7px solid #fff !important;
-    }
+  }
+  &:focus {
+    background-color: #ed3b5a !important;
+    color: #fff !important;
+  }
+  &:hover {
+    background-color: #ed3b5a !important;
+    color: #fff !important;
+  }
 }
 
 .btn-face {
@@ -79,9 +87,11 @@
 
   &:focus {
     color: #fff !important;
+    background-color: #137e8f !important;
   }
   &:hover {
     color: #fff !important;
+    background-color: #137e8f !important;
   }
 }
 
