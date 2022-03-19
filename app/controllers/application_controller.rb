@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
       if !current_user.phone
         redirect_to new_phone_path
       elsif !current_user.about
-        redirect_to new_about_path
+        redirect_to presentation_path
+        # redirect_to new_about_path
       elsif !current_user.answers || current_user.answers.length < 10
         redirect_to new_answer_path
       else
@@ -29,7 +30,8 @@ class ApplicationController < ActionController::Base
     if !current_user.phone
       new_phone_path
     elsif !current_user.about
-      new_about_path
+      # new_about_path
+      presentation_path
     elsif !current_user.answers || current_user.answers.length < 10
       new_answer_path
     else

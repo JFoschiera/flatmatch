@@ -12,7 +12,7 @@ class PhonesController < ApplicationController
       if current_user.about
         redirect_to new_answer_path
       else
-        redirect_to new_about_path
+        redirect_to presentation_path
       end
     else
       render :new
