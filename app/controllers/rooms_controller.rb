@@ -73,7 +73,7 @@ class RoomsController < ApplicationController
         result += difference
       end
     end
-    room.compatibility = 100 - result
+    room.compatibility = 100 - (result * 2)
     room.save
   end
 
