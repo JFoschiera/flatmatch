@@ -1,14 +1,12 @@
 <% rooms.order("compatibility desc").each do |room| %>
   <% if room.user.id != current_user.id %>
     <div class="card-trip" id="resize-cards-<%= room.id %>">
-      <div id=<%= "carouselExampleIndicators#{room.id}" %> class="carousel slide"  data-bs-interval="false">
+      <div id=<%= "carouselExampleIndicators#{room.id}" %> class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-
           <% if room.photos.attached? %>
             <% room.photos.each_with_index do |photo, index| %>
               <div class="carousel-item <%= index.zero? ? "active" : "" %>">
                 <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill %>
-
               </div>
             <% end %>
           <% else %>
@@ -17,7 +15,6 @@
             </div>
           <% end %>
         </div>
-
         <button class="carousel-control-prev" type="button" data-bs-target=<%= "#carouselExampleIndicators#{room.id}" %> data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
@@ -27,7 +24,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div class="card-liked-infos">
+      <div class="card-trip-infos">
         <div>
           <h2><%= room.address  %></h2>
           <p> <strong> <%= room.city %> </strong> </p>
@@ -36,7 +33,6 @@
 
 
           <span>
-
             <%= link_to "Show more", room_url(room) %>
 
 
@@ -49,11 +45,7 @@
                 <i class="fas fa-heart disliked ms-1"></i>
               <% end %>
             <% end %>
-
           </span>
-
-
-
         </div>
         <div>
           <span class="badge rounded-pill compatibility", style="background-color: #ed3b5a"><%= room.compatibility %>%</span>
