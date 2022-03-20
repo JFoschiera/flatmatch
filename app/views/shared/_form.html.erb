@@ -23,17 +23,17 @@
     <%= f.input :end_date, as: :date, html5: true,
                 input_html: { class: "my-form-style my-3" } %>
     <%= f.input :pets,
-                placeholder: 'Choose an option',
                 collection: Room::PETSPER,
-                input_html: { class: "my-form-style" } %>
+                as: :radio_buttons,
+                input_html: { style: "margin-left: -0.9em; margin-right: 0.5em" } %><br>
     <%= f.input :smoking,
-                placeholder: 'Choose an option',
                 collection: Room::SMOKEPER,
-                input_html: { class: "my-form-style" } %>
+                as: :radio_buttons,
+                input_html: { style: "margin-left: -0.9em; margin-right: 0.5em" } %><br>
     <%= f.input :visitors,
-                placeholder: 'Choose an option',
                 collection: Room::VISITPER,
-                input_html: { class: "my-form-style" } %>
+                as: :radio_buttons,
+                input_html: { style: "margin-left: -0.9em; margin-right: 0.5em" } %><br>
     <%= f.input :description,
                 placeholder: 'Tell the comunity a bit about the co living in the house.',
                 input_html: {
@@ -49,15 +49,18 @@
                 input_html: { class: "my-form-style my-3" } %>
     <%= f.input :utilities,
                 collection: Room::UTILIPER,
-                input_html: { class: "my-form-style" }  %>
+                as: :radio_buttons,
+                input_html: { style: "margin-left: -0.9em; margin-right: 0.5em" }  %>
     <br>
-    <%= f.input :photos,
-                as: :file,
-                input_html: { multiple: true } %>
+    <label class="btn btn-secondary my-form-style upload-button">
+      Upload pictures
+      <span style="display:none;">
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      </span>
+    </label>
   </div>
   <div class="form-actions mt-3" style="padding-bottom: 30px">
     <%= f.button :submit, class: 'btn btn-face' %>
-    </div>
   </div>
 </div>
 <% end  %>
