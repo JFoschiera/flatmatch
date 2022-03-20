@@ -22,6 +22,13 @@
     <h4><strong>About</strong></h4>
     <p><%= @person.about.about_user %></p>
   <% end %>
+
+  <div class="match-button">
+    <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
+      <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
+    <% end %>
+  </div>
+  
   <h4 class="mt-4 mb-3"><strong>Questionary</strong></h4>
   <% @person.answers.each_with_index do |answer, index| %>
     <div class="answer-border mb-4">
