@@ -67,7 +67,7 @@
                 </button>
               </div>
 
-              <div class="show-body mb-5">
+              <div class="show-body mb-2">
                 <div class="my-container px-2">
                   <div class="row mt-4">
                     <p style="font-size: 16px"><strong><%= room.address %></strong> </p>
@@ -83,29 +83,35 @@
                     <%# %>
                     <div class="liked-container mx-3 mt-3">
                       <% if room.likes %>
-                      <p style="font-size: 16px; color: #ed3b5a; margin-bottom: 5px"><strong>Likes on this room
+                      <p style="font-size: 16px; color: #ed3b5a; margin-bottom: 8px"><strong>Likes on this room
                         </strong></p>
                       <% room.likes.each do |like| %>
                       <div class="d-flex justify-content-between people-liked">
-                        <div class="users-link">
+                        <div class="users-link d-flex justify-content-between">
+                          <div class="align-self-center">
                           <p>
                             <% if like.user.facebook_picture_url %>
                             <%= image_tag like.user.facebook_picture_url, class: "avatar-small dropdown-toggle" %>
-                            <%= link_to user_profile_path(like.user.id, like.id) do %>
+
                             <%= like.user.first_name %>
-                            <% end %>
                             <% elsif like.user.avatar.attached? %>
                             <%= cl_image_tag like.user.avatar.key, class: "avatar-small dropdown-toggle" %>
-                            <%= link_to user_profile_path(like.user.id, like.id) do %>
+
                             <%= like.user.name %>
-                            <% end %>
                             <% else %>
                             <%= image_tag "avatar.webp", class: "avatar-small dropdown-toggle"%>
-                            <%= link_to user_profile_path(like.user.id, like.id) do %>
                             <%= like.user.name %>
                             <% end %>
-                            <% end %>
                           </p>
+                          </div>
+<div class="align-self-center" style="color: #137e8f;">
+       <%= link_to user_profile_path(like.user.id, like.id) do %>
+       <p>Go to profile</p>
+       </div>
+                            <% end %>
+
+
+
                         </div>
                       </div>
                       <% end %>
@@ -136,20 +142,21 @@
 
 
 
-    <div class="container px-1">
-    <h2 class="mt-4 ml-2"><strong>Liked rooms</strong></h2>
+    <div class="my-rooms-container px-2">
+    <h2 class="mt-4 ms-2" ><strong>Liked rooms</strong></h2>
 
+      <div class="card-liked-infos mt-3">
       <% if current_user.likes && current_user.likes.length > 0 %>
 
       <% current_user.likes.each do |like| %>
-      <div class="mt-3">
+      <div>
         <div id=<%= "carouselExampleIndicators#{like.room.id}" %> class="carousel slide"   data-bs-interval="false">
 
           <div class="carousel-inner">
             <% if like.room.photos.attached? %>
             <% like.room.photos.each_with_index do |photo, index| %>
             <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-              <%= cl_image_tag photo.key, class: "d-block w-100", height: 250, width: 400, crop: :fill %>
+              <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill %>
             </div>
             <% end %>
             <% else %>
@@ -171,30 +178,25 @@
         </div>
       </div>
 
-      <div class="show-body mb-5">
-        <div class="my-container">
-          <div class="row mt-5">
-            <%= link_to room_like_path(like.room.id, like.room.likes.where(user: current_user).first.id), method: :delete, class: 'card-heart-my-rooms' do %>
-            <i class="fas fa-heart liked ms-1"></i>
-            <% end %>
-            <p><strong>Location:</strong> <%= like.room.address %></p>
-            <p><strong>Price: </strong>R$<%= sprintf("%.2f", like.room.price) %></p>
-            <p><strong>Description: </strong><%= like.room.description %></p>
-            <div>
-              <p>
-                <% if like.room.user.facebook_picture_url %>
-                <%= image_tag like.room.user.facebook_picture_url, class: "avatar dropdown-toggle" %>
-                <%= like.room.user.first_name %>
-                <% elsif like.room.user.avatar.attached? %>
-                <%= cl_image_tag like.room.user.avatar.key, class: "avatar dropdown-toggle" %>
-                <%= like.room.user.name %>
-                <% else %>
-                <%= image_tag "avatar.webp", class: "avatar dropdown-toggle"%>
-                <%= like.room.user.name %>
-                <% end %>
-              </p>
+      <div class="show-body mb-3">
+        <div class="my-container px-2">
+          <div class="row mt-3 show-more-link">
+
+
+            <p style="font-size: 16px;"><strong><%= like.room.address %></strong> </p>
+            <p><strong>R$<%= sprintf("%.2f", like.room.price) %></strong></p>
+            <p><strong>size: </strong><%= like.room.size %> m²</p>
+            <p style="margin-top: 2px;"><%= like.room.description[0..60] %> ... </p>
+
+
+
+
+            <%= link_to "Show more", room_url(like.room) %>
+
+
             </div>
           </div>
+        </div>
         </div>
       </div>
       <% end %>
@@ -206,3 +208,4 @@
     </div>
   </div>
 </div>
+<div class="my-5"></div>
