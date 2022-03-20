@@ -1,54 +1,76 @@
-<div class="container d-flex align-items-center justify-content-center">
-  <% if @person.facebook_picture_url %>
+<div class="container mt-3 px-2 mx-2 my-2" , style="width: 95%">
+
+  <div class="profile-container">
+
+
+    <div class="name-pic d-flex justify-content-center align-items-center pt-3">
+
+    <% if @person.facebook_picture_url %>
     <div class="me-3">
       <%= image_tag @person.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     </div>
     <h1 class="mt-2"><strong><%= @person.first_name %>'s Profile</strong></h1>
-  <% elsif @person.avatar.attached? %>
+    <% elsif @person.avatar.attached? %>
     <div class="me-3">
       <%= cl_image_tag @person.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     </div>
     <h1 class="mt-2"><strong><%= @person.name %>'s Profile</strong></h1>
-  <% else %>
+    <% else %>
     <div class="me-3">
       <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
     </div>
     <h1 class="mt-2"><strong><%= @person.name %>'s Profile</strong></h1>
-  <% end %>
-</div>
-<div class="container mb-4">
-
-  <% if @person.about %>
-    <h4><strong>About</strong></h4>
-    <p><%= @person.about.about_user %></p>
-  <% end %>
-
-  <div class="match-button">
-    <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
-      <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
     <% end %>
-  </div>
-  
-  <h4 class="mt-4 mb-3"><strong>Questionary</strong></h4>
-  <% @person.answers.each_with_index do |answer, index| %>
-    <div class="answer-border mb-4">
-      <p>
-        <span class="color: #137e8f"><strong><%= answer.question.question_description %></strong></span><br>
-        <small><%= answer.question.answer_description %></small>
-      </p>
-      <div class="d-flex justify-content-between">
-        <% if @person.first_name %>
-          <small><strong><%= @person.first_name %>'s rating: </strong><%= answer.score %></small>
-        <% else %>
-          <small><strong><%= @person.name %>'s rating: </strong><%= answer.score %></small>
-        <% end %>
-        <small class="pt-3"><strong>Your rating: </strong style="ps-2"><%= current_user.answers[index].score %></small>
-      </div>
-    </div>
-  <% end %>
-  <div class="match-button">
-    <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
+
+</div>
+
+
+  <div class="container mb-4 pb-4 px-4">
+
+    <% if @person.about %>
+    <p><%= @person.about.about_user %></p>
+    <% end %>
+
+    <div class="match-button">
+      <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
       <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+      <h4 class="mt-4 py-1" style="border-bottom: 2px solid #ed3b5a; font-size: 18px"><strong>Questionary:</strong></h4>
+
+  <% @person.answers.each_with_index do |answer, index| %>
+
+  <div class="questions" style="border-bottom: 1px solid #ed3b5a">
+
+    <p class="question-description mt-2" style="color: #137e8f; font-weight: 600;">
+          <%= answer.question.question_description %></p>
+
+           <p class="answer-description"><%= answer.question.answer_description.partition('10').first %></p>
+        <p class="answer-description">10 <%= answer.question.answer_description.partition('10 ').last %></p>
+
+    <div class="choice d-flex justify-content-between" style="font-weight: 600">
+      <% if @person.first_name %>
+      <small><%= @person.first_name %>'s rating: <%= answer.score %></small>
+      <% else %>
+      <small><%= @person.name %>'s rating: <%= answer.score %></small>
+      <% end %>
+      <small>Your rating: <%= current_user.answers[index].score %></small>
+    </div>
+
+
+
+  </div>
+  <% end %>
+  <div class="my-4 match-button">
+    <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
+    <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
     <% end %>
   </div>
 </div>
