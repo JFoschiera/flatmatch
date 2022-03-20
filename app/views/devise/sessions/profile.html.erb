@@ -1,64 +1,76 @@
-<div class="container mt-3">
-<div class="name-pic d-flex justify-content-center align-items-center pt-3" >
+<div class="container mt-3 px-2 mx-2" , style="width: 95%">
+
+  <div class="profile-container">
 
 
-  <% if current_user.facebook_picture_url %>
-    <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    <% elsif current_user.avatar.attached? %>
+    <div class="name-pic d-flex justify-content-center align-items-center pt-3">
+
+      <% if current_user.facebook_picture_url %>
+      <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% elsif current_user.avatar.attached? %>
       <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    <% else %>
+      <% else %>
       <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
-    <% end %>
-    <h1 class="mx-3">
+      <% end %>
+      <h1 class="mx-3">
 
         <% if current_user.first_name %>
-          <%= current_user.first_name %>
+        <%= current_user.first_name %>
         <% else %>
-          <%= current_user.name %>
+        <%= current_user.name %>
         <% end %>
         's Profile
 
-    </h1>
-
-  </div>
-
-<div class="container mt-5">
-  <div class="other-info">
-    <% if current_user.about %>
-      <h4><strong>About:</strong></h4>
-      <p><%= current_user.about.about_user %></p>
-    <% end %>
-
-    <% if current_user.phone %>
-      <h4 class="mt-4"><strong>Phone Number:</strong></h4>
-      <p><%= current_user.phone.cellphone %></p>
-    <% end %>
-
-    <% if current_user.email %>
-    <h4 class="mt-4"><strong>Email:</strong></h4>
-    <p><%= current_user.email %></p>
-    <% end %>
-
-
-
-    <% if current_user.answers %>
-    <h4 class="mt-4 py-1" style="border-bottom: 2px solid #ed3b5a"><strong>Questionary:</strong></h4>
-
-    <% current_user.answers.each do |answer| %>
-    <div class="questions" style="border-bottom: 1px solid #ed3b5a">
-      <p class="question-description mt-2" style="color: #137e8f; font-weight: 600;"><%= answer.question.question_description %></p>
-      <p class="answer-description"><%= answer.question.answer_description.partition('10').first %></p>
-      <p class="answer-description">10 <%= answer.question.answer_description.partition('10 ').last %></p>
-      <p class="choice">Your ratting: <%= answer.score %></p>
+      </h1>
     </div>
 
-    <% end %>
-    <% end %>
 
+    <div class="container mt-3">
+      <div class="other-info", style="padding-bottom: 1px;">
+        <% if current_user.about %>
+        <h4><strong>About:</strong></h4>
+        <p><%= current_user.about.about_user %></p>
+        <% end %>
 
+        <% if current_user.phone %>
+        <h4 class="mt-4"><strong>Phone Number:</strong></h4>
+        <p><%= current_user.phone.cellphone %></p>
+        <% end %>
+
+        <% if current_user.email %>
+        <h4 class="mt-4"><strong>Email:</strong></h4>
+        <p><%= current_user.email %></p>
+        <% end %>
+
+        <div class="container mt-3 mb-2">
+          <%= link_to "Edit your profile", new_answer_path, method: :delete, class: 'btn btn-face' %>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="container mt-3 mb-5">
- <%= link_to "Edit your answers?", new_answer_path, method: :delete, class: 'btn btn-face' %>
-</div>
+
+
+
+      <% if current_user.answers %>
+      <h4 class="mt-4 py-1" style="border-bottom: 2px solid #ed3b5a; font-size: 18px"><strong>Questionary:</strong></h4>
+
+      <% current_user.answers.each do |answer| %>
+      <div class="questions" style="border-bottom: 1px solid #ed3b5a">
+        <p class="question-description mt-2" style="color: #137e8f; font-weight: 600;">
+          <%= answer.question.question_description %></p>
+        <p class="answer-description"><%= answer.question.answer_description.partition('10').first %></p>
+        <p class="answer-description">10 <%= answer.question.answer_description.partition('10 ').last %></p>
+        <p class="choice">Your ratting: <%= answer.score %></p>
+      </div>
+
+      <% end %>
+      <% end %>
+
+  <div class="container mt-3 pb-3">
+    <%= link_to "Edit your answers?", new_answer_path, method: :delete, class: 'btn btn-face' %>
+  </div>
+
+    </div>
+  </div>

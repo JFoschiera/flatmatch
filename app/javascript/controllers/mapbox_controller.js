@@ -21,6 +21,7 @@ export default class extends Controller {
     this._fitMapToMarkers()
     this._addZoomToMap()
     this._addMarkersToMap()
+    this._timeout()
   }
 
   _addMarkersToMap() {
@@ -58,4 +59,9 @@ export default class extends Controller {
         .addTo(this.map)
     });
   }
+
+  _timeout() {
+    this.map.setView([39.53818, -79.43430000000001], 7);
+  };
+
 }
