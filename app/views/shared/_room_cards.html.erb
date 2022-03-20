@@ -29,13 +29,8 @@
           <h2><%= room.address  %></h2>
           <p> <strong> <%= room.city %> </strong> </p>
           <p class="mt-2"> <strong> <%= room.start_date.strftime('%dth %B') %> </strong> </p>
-
-
-
           <span>
-            <%= link_to "Show more", room_url(room) %>
-
-
+            <%= link_to "Show more", room_url(room), class: "me-4" %>
             <% if room.likes && room.likes.where(user: current_user).length > 0 %>
               <%= link_to room_like_path(room.id, room.likes.where(user: current_user).first.id), method: :delete, class: 'card-heart', remote: true do %>
                 <i class="fas fa-heart liked ms-1"></i>
