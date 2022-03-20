@@ -1,7 +1,7 @@
 <% rooms.order("compatibility desc").each do |room| %>
   <% if room.user.id != current_user.id %>
     <div class="card-trip" id="resize-cards-<%= room.id %>">
-      <div id=<%= "carouselExampleIndicators#{room.id}" %> class="carousel slide" data-bs-ride="carousel">
+      <div id=<%= "carouselExampleIndicators#{room.id}" %> class="carousel slide"  data-bs-interval="false">
         <div class="carousel-inner">
           <% if room.photos.attached? %>
             <% room.photos.each_with_index do |photo, index| %>

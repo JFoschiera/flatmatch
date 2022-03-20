@@ -13,6 +13,11 @@
   max-height: 350px;
 }
 
+.profile-container {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4PX;
+}
+
 .card-trip > img {
   height: 200px;
   width: 100%;
@@ -86,4 +91,3 @@
 .liked {
   color: #ed3b5a !important;
 }
-

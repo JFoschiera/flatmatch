@@ -9,11 +9,11 @@
 
 
 
-Question.create(question_description: "Are you a party person?", answer_description: "0 - Never party. 10 -Party crazy!")
+Question.create(question_description: "Are you a party person?", answer_description: "0 - Never party. 10 - Party crazy!")
 
 Question.create(question_description: "About politics:", answer_description: "0 - Left. 10 - Right.")
 
-Question.create(question_description: "What about the differences?", answer_description: "0 - I prefer people alike. 10 - I like what diverges")
+Question.create(question_description: "What about the differences?", answer_description: "0 - I prefer what is alike. 10 - I like what diverges")
 
 Question.create(question_description: "About drugs:", answer_description: "0 - Against it. 10 - Open about it.")
 

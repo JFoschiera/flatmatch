@@ -17,17 +17,14 @@
   <% end %>
 </div>
 <div class="container mb-4">
-  <% if @person.phone %>
-    <h4 class="mt-4"><strong>Phone Number</strong></h4>
-    <p><%= @person.phone.cellphone %></p>
-  <% end %>
+
   <% if @person.about %>
     <h4><strong>About</strong></h4>
     <p><%= @person.about.about_user %></p>
   <% end %>
   <h4 class="mt-4 mb-3"><strong>Questionary</strong></h4>
   <% @person.answers.each_with_index do |answer, index| %>
-    <div class="answer-border mb-4"> 
+    <div class="answer-border mb-4">
       <p>
         <span class="color: #137e8f"><strong><%= answer.question.question_description %></strong></span><br>
         <small><%= answer.question.answer_description %></small>
