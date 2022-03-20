@@ -136,14 +136,14 @@
 
 
 
-    <div class="liked-rooms">
-      <h2 class="my-5 ml-2">Liked rooms</h2>
+    <div class="container px-1">
+    <h2 class="mt-4 ml-2"><strong>Liked rooms</strong></h2>
 
       <% if current_user.likes && current_user.likes.length > 0 %>
 
       <% current_user.likes.each do |like| %>
       <div class="mt-3">
-        <div id=<%= "carouselExampleIndicators#{like.room.id}" %> class="carousel slide" data-bs-ride="carousel">
+        <div id=<%= "carouselExampleIndicators#{like.room.id}" %> class="carousel slide"   data-bs-interval="false">
 
           <div class="carousel-inner">
             <% if like.room.photos.attached? %>
