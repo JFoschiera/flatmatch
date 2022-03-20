@@ -1,0 +1,68 @@
+
+
+<div>
+  <% if current_user.likes && current_user.likes.length > 0 %>
+
+    <% current_user.likes.each do |like| %>
+      <div class="card-trip" id="resize-cards-<%= like.room.id %>">
+        <div id=<%= "carouselExampleIndicators#{like.room.id}" %> class="carousel slide" data-bs-ride="carousel">
+
+          <div class="carousel-inner">
+            <% if like.room.photos.attached? %>
+              <% like.room.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+                  <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="carousel-item active">
+                <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 200, width: 400, crop: :fill %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="<%= "#carouselExampleIndicators#{like.room.id}" %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="<%= "#carouselExampleIndicators#{like.room.id}" %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= like.room.address  %></h2>
+          <p> <strong> <%= like.room.city %> </strong> </p>
+          <p class="mt-2"> <strong> <%= like.room.start_date.strftime('%dth %B') %> </strong> </p>
+
+
+
+          <span>
+            <%= link_to "Show more", room_url(like.room) %>
+
+
+          <%= link_to room_like_path(like.room.id, like.room.likes.where(user: current_user).first.id), method: :delete, class: 'card-heart-my-rooms' do %>
+            <i class="fas fa-heart liked ms-1"></i>
+          <% end %>
+
+
+
+          </span>
+        </div>
+        <div>
+          <span class="badge rounded-pill compatibility", style="background-color: #ed3b5a"><%= like.room.compatibility %>%</span>
+          <h2 class="card-trip-pricing">R$<%= sprintf("%.2f", like.room.price) %></h2>
+          <% if like.room.user.avatar.attached? %>
+            <%= cl_image_tag like.room.user.avatar.key, class: "card-trip-user avatar", alt: "avatar" %>
+          <% elsif like.room.user.uid %>
+            <%= image_tag like.room.user.facebook_picture_url, class: "card-trip-user avatar", alt: "avatar" %>
+          <% else %>
+            <%= image_tag "avatar.webp", class: "card-trip-user avatar-bordered" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>

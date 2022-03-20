@@ -13,6 +13,11 @@
   max-height: 350px;
 }
 
+.profile-container {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 4PX;
+}
+
 .card-trip > img {
   height: 200px;
   width: 100%;
@@ -38,6 +43,10 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  a {
+    color: #137e8f;
+    opacity: 1 !important;
+  }
 }
 
 .card-trip-infos .card-trip-user {
@@ -45,10 +54,11 @@
   right: 16px;
   top: -20px;
   width: 40px;
+  border: white 2px solid;
+
 }
 
 .card-trip-user {
-  border: white 1px solid;
 }
 
 .card-trip a {
@@ -63,15 +73,19 @@
 // LIKED and DISLIKED -- Heart -- Percentage
 
 .card-trip a.card-heart {
+
   text-decoration: none;
-  font-size: 18px;
+  font-size: 25px;
   opacity: 1 !important;
-  color: transparent !important;
+  color: #fff !important;
   margin: 0;
+  padding-left: 25px;
+  margin-top: -25px;
 }
 
 .compatibility {
   position: absolute;
+
   right: 15px;
   top: 40px;
   font-size: 16px;
@@ -86,4 +100,3 @@
 .liked {
   color: #ed3b5a !important;
 }
-
