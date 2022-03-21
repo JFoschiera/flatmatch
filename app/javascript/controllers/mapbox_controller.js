@@ -14,15 +14,17 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       zoom: 6,
-      center: [4.9, 52.3], // starting position
 
     })
     this._addMarkersToMap()
     this._fitMapToMarkers()
-    this._addZoomToMap()
     this._addMarkersToMap()
-    this._timeout()
+    document.getElementById('btn-show-map').addEventListener('click', (event) => {
+      event.preventDefault()
+        this.map.resize()
+    })
   }
+
 
   _addMarkersToMap() {
     this.markersValue.forEach((marker) => {
@@ -38,18 +40,6 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { minZoom:3, maxZoom: 13, duration: 2000 })
   }
 
-  _addZoomToMap() {
-    this.map.addControl(new mapboxgl.NavigationControl());
-    document.getElementById('listing-group').addEventListener('change', (e) => {
-      const handler = e.target.id;
-      if (e.target.checked) {
-        map[handler].enable();
-      } else {
-        map[handler].disable();
-      }
-    });
-  }
-
   _addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window) // add this
@@ -59,9 +49,4 @@ export default class extends Controller {
         .addTo(this.map)
     });
   }
-
-  _timeout() {
-    this.map.setView([39.53818, -79.43430000000001], 7), 0;
-  };
-
 }

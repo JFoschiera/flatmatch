@@ -14,18 +14,20 @@
       <% end %>
     </div>
   </div>
+
   <p>
-    <a class="d-flex justify-content-center mt-2" id="btn-show-map" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a class="d-flex justify-content-center mt-2"
+    id="btn-show-map" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
       Show on map
     </a>
   </p>
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
-      <div class="d-flex justify-content-center mt-2">
-        <div id="map" style="height: 70vh; width: 100%" data-controller="mapbox"
+
+        <div id="map" class="map-closed" style="height: 70vh; width: 100%" data-controller="mapbox"
         data-mapbox-markers-value="<%= @markers.to_json %>" data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-      </div>
+
     </div>
   </div>
 
