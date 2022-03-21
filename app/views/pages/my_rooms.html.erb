@@ -2,22 +2,57 @@
   <div class="container">
     <h2 class="mt-4 ml-2"><strong>Matches</strong></h2>
     <% @compatibilities.each do |compatibility| %>
-    <div class="notification">
-      <% if compatibility.user1.avatar.attached? %>
-      <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
-      <% else %>
-      <%= image_tag "avatar.webp", class: "avatar-large"%>
+      <% if compatibility.user1 != current_user %>
+        <div class="notification">
+          <% if compatibility.user1.avatar.attached? %>
+          <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
+          <% else %>
+          <%= image_tag "avatar.webp", class: "avatar-large"%>
+          <% end %>
+          <div class="notification-content">
+            <p><small><strong><%= compatibility.user1.name %></strong></small></p>
+            <p><small><%= compatibility.user1.about.about_user[0..60] %> ... </small></p>
+            <% if compatibility.user1.phone.cellphone %>
+              <p class="mb-2">
+                <small><%= compatibility.user1.phone.cellphone %></small>
+              </p>
+              <% if @chatrooms.where(user: compatibility.user1).length.positive? %>
+                <%= link_to "See messages", chatroom_path(@chatrooms.where(user: compatibility.user1).first), class: "chatroom-button" %>
+              <% else %>
+                <span>
+                  <%= link_to "Send message", chatrooms_create_path(compatibility.user1.id), method: :post, class: "chatroom-button" %>
+                </span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-      <div class="notification-content">
-        <p><small><strong><%= compatibility.user1.name %></strong></small></p>
-        <p><small><%= compatibility.user1.about.about_user[0..60] %> ... </small></p>
-        <% if compatibility.user1.phone.cellphone %>
-        <p><small><%= compatibility.user1.phone.cellphone %></small></p>
-        <% end %>
-      </div>
-    </div>
+      <% if compatibility.user2 != current_user %>
+        <div class="notification">
+          <% if compatibility.user2.avatar.attached? %>
+          <%= cl_image_tag compatibility.user2.avatar.key, class: "avatar-large" %>
+          <% else %>
+          <%= image_tag "avatar.webp", class: "avatar-large"%>
+          <% end %>
+          <div class="notification-content">
+            <p><small><strong><%= compatibility.user2.name %></strong></small></p>
+            <p><small><%= compatibility.user2.about.about_user[0..60] %> ... </small></p>
+            <% if compatibility.user2.phone.cellphone %>
+              <p class="mb-2">
+                <small><%= compatibility.user2.phone.cellphone %></small>
+              </p>
+              <% if @chatrooms.where(user: compatibility.user1).length.positive? %>
+                <%= link_to "See messages", chatroom_path(@chatrooms.where(user: compatibility.user1).first), class: "chatroom-button" %>
+              <% else %>
+                <span>
+                  <%= link_to "Send message", chatrooms_create_path(compatibility.user1.id), method: :post, class: "chatroom-button" %>
+                </span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-
   </div>
 
 
