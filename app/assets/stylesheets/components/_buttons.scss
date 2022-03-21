@@ -102,21 +102,10 @@
 #about-button {
   position: absolute;
   bottom: -64px;
-  right: 112px;
+  right: 125px;
   border: 5px solid #fff;
   background-color: #fff;
 
-  &:active {
-    border: none !important;
-  }
-
-  &:focus {
-    border: none !important;
-  }
-
-  &:hover {
-    border: none !important;
-  }
 }
 
 #question-button {
@@ -125,38 +114,15 @@
   left: 42%;
   border: 5px solid #fff;
   background-color: #fff;
-
-  &:active {
-    border: none !important;
-  }
-
-  &:focus {
-    border: none !important;
-  }
-
-  &:hover {
-    border: none !important;
-  }
 }
 
 #phone-button {
   position: absolute;
-  bottom: -28;
+  bottom: -28px;
   left: 42%;
   border: 5px solid #fff;
   background-color: #fff;
 
-    &:active {
-    border: none !important;
-    }
-
-    &:focus {
-      border: none !important;
-    }
-
-    &:hover {
-      border: none !important;
-    }
 }
 
 #match-button {
