@@ -1,12 +1,11 @@
 <div class="whole-page" style="width: 98%">
-
   <div class="container">
     <h2 class="mt-4 ml-2"><strong>Matches</strong></h2>
     <% @compatibilities.each do |compatibility| %>
       <% if compatibility.user1 != current_user %>
         <div class="notification">
           <div class="notification-user">
-            <%= link_to user_profile_path(compatibility.user1.id, compatibility.id) do %>
+            <%= link_to user_profile_path(compatibility.user1.id, compatibility.like.id) do %>
               <div class="notifications-user">
                 <% if compatibility.user1.avatar.attached? %>
                   <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
@@ -17,7 +16,7 @@
             <% end %>
           </div>
           <div class="notification-content">
-            <p><small><strong><%= compatibility.user1.name %></strong></small></p>
+            <p class="mb-2"><small><strong><%= compatibility.user1.name %></strong></small></p>
             <% if @chatrooms.where(user: compatibility.user1).length.positive? %>
               <%= link_to "See messages", chatroom_path(@chatrooms.where(user: compatibility.user1).first), class: "chatroom-button" %>
             <% else %>
@@ -31,7 +30,7 @@
       <% if compatibility.user2 != current_user %>
         <div class="notification">
           <div class="notification-user">
-            <%= link_to user_profile_path(compatibility.user2.id, compatibility.id) do %>
+            <%= link_to user_profile_path(compatibility.user2.id, compatibility.like.id) do %>
               <div class="notifications-user">
                 <% if compatibility.user2.avatar.attached? %>
                   <%= cl_image_tag compatibility.user2.avatar.key, class: "avatar-large" %>
@@ -42,7 +41,7 @@
             <% end %>
           </div>
           <div class="notification-content">
-            <p><small><strong><%= compatibility.user2.name %></strong></small></p>
+            <p class="mb-2"><small><strong><%= compatibility.user2.name %></strong></small></p>
             <% if @chatrooms.where(user: compatibility.user1).length.positive? %>
               <%= link_to "See messages", chatroom_path(@chatrooms.where(user: compatibility.user1).first), class: "chatroom-button" %>
             <% else %>
@@ -56,139 +55,116 @@
     <% end %>
   </div>
 
-
-
   <div class="container pt-3">
-
-
-    <h2><strong>
+    <h2>
+      <strong>
         <hr>
         <a style="font-size: 20px" class="show-my-room-link py-2 px-2" id="" data-bs-toggle="collapse"
           href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Show my offered rooms ▼
         </a>
         <hr>
-      </strong></h2>
+      </strong>
+    </h2>
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
-
         <div class="container my_rooms" style="padding: -20px">
-
           <div class="my-room-card">
             <% if current_user.rooms && current_user.rooms.length > 0 %>
-            <% current_user.rooms.each do |room| %>
-            <div class="">
-              <div id=<%= "carouselExampleIndicators#{room.id}" %> class="carousel slide" data-bs-interval="false">
-                <div class="carousel-inner">
-                  <% if room.photos.attached? %>
-                  <% room.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
-                  </div>
-                  <% end %>
-                  <% else %>
-                  <div class="carousel-item active">
-                    <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 200, width: 400, crop: :fill %>
-                  </div>
-                  <% end %>
-                </div>
-                <button class="carousel-control-prev" type="button"
-                  data-bs-target="<%= "#carouselExampleIndicators#{room.id}" %>" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button"
-                  data-bs-target="<%= "#carouselExampleIndicators#{room.id}" %>" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-
-              <div class="show-body mb-2">
-                <div class="my-container px-2">
-                  <div class="row mt-4">
-                    <p style="font-size: 16px"><strong><%= room.address %></strong> </p>
-                    <p><strong>R$<%= sprintf("%.2f", room.price) %></strong></p>
-                    <p><%= room.description[0..75] %>...</p>
-                    <p><%= link_to "Edit Room", room_url(room), class: "btn-face edit-room py-1" %></p>
-                    <div style="margin-top: -18px">
-                      <hr>
-                    </div>
-                    <%# <%= link_to "Rented", my_rooms_path, %>
-                    <%# method: :delete, %>
-                    <%# data: { confirm: "Room is rented?" } %>
-                    <%# %>
-                    <div class="liked-container mx-3 mt-3">
-                      <% if room.likes %>
-                      <p style="font-size: 16px; color: #ed3b5a; margin-bottom: 8px"><strong>Likes on this room
-                        </strong></p>
-                      <% room.likes.each do |like| %>
-                      <div class="d-flex justify-content-between people-liked">
-                        <div class="users-link d-flex justify-content-between">
-                          <div class="align-self-center">
-                            <p>
-                              <% if like.user.facebook_picture_url %>
-                              <%= image_tag like.user.facebook_picture_url, class: "avatar-small dropdown-toggle" %>
-
-                              <%= like.user.first_name %>
-                              <% elsif like.user.avatar.attached? %>
-                              <%= cl_image_tag like.user.avatar.key, class: "avatar-small dropdown-toggle" %>
-
-                              <%= like.user.name %>
-                              <% else %>
-                              <%= image_tag "avatar.webp", class: "avatar-small dropdown-toggle"%>
-                              <%= like.user.name %>
-                              <% end %>
-                            </p>
-                          </div>
-                          <div class="align-self-center" style="color: #137e8f;">
-                            <%= link_to user_profile_path(like.user.id, like.id) do %>
-                            <p>Go to profile</p>
-                          </div>
-                          <% end %>
-
-
-
-                        </div>
+              <% current_user.rooms.each do |room| %>
+                <div class="">
+                  <div id=<%= "carouselExampleIndicators#{room.id}" %> class="carousel slide" data-bs-interval="false">
+                    <div class="carousel-inner">
+                      <% if room.photos.attached? %>
+                      <% room.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+                        <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
                       </div>
                       <% end %>
+                      <% else %>
+                      <div class="carousel-item active">
+                        <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 200, width: 400, crop: :fill %>
+                      </div>
                       <% end %>
                     </div>
+                    <button class="carousel-control-prev" type="button"
+                      data-bs-target="<%= "#carouselExampleIndicators#{room.id}" %>" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                      data-bs-target="<%= "#carouselExampleIndicators#{room.id}" %>" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
                   </div>
 
+                  <div class="show-body mb-2">
+                    <div class="my-container px-2">
+                      <div class="row mt-4">
+                        <p style="font-size: 16px"><strong><%= room.address %></strong> </p>
+                        <p><strong>R$<%= sprintf("%.2f", room.price) %></strong></p>
+                        <p><%= room.description[0..75] %>...</p>
+                        <p><%= link_to "Edit Room", edit_room_path(room.id), class: "btn-face edit-room py-1" %></p>
+                        <div style="margin-top: -18px">
+                          <hr>
+                        </div>
+                        <%# <%= link_to "Rented", my_rooms_path, %>
+                        <%# method: :delete, %>
+                        <%# data: { confirm: "Room is rented?" } %>
+                        <%# %>
+                        <div class="liked-container mx-3 mt-3">
+                          <% if room.likes %>
+                            <p style="font-size: 16px; color: #ed3b5a; margin-bottom: 8px"><strong>Likes on this room
+                              </strong>
+                            </p>
+                            <% room.likes.each do |like| %>
+                              <div class="d-flex justify-content-between people-liked">
+                                <div class="users-link d-flex justify-content-between">
+                                  <div class="align-self-center">
+                                    <p>
+                                      <% if like.user.facebook_picture_url %>
+                                      <%= image_tag like.user.facebook_picture_url, class: "avatar-small dropdown-toggle" %>
+
+                                      <%= like.user.first_name %>
+                                      <% elsif like.user.avatar.attached? %>
+                                      <%= cl_image_tag like.user.avatar.key, class: "avatar-small dropdown-toggle" %>
+
+                                      <%= like.user.name %>
+                                      <% else %>
+                                      <%= image_tag "avatar.webp", class: "avatar-small dropdown-toggle"%>
+                                      <%= like.user.name %>
+                                      <% end %>
+                                    </p>
+                                  </div>
+                                  <div class="align-self-center" style="color: #137e8f;">
+                                    <%= link_to user_profile_path(like.user.id, like.id) do %>
+                                      <p>Go to profile</p>
+                                    <% end %>
+                                  </div>
+                                </div>
+                              </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
               <% end %>
-            </div>
             <% else %>
-            <p>No Rooms registered yet.</p>
+              <p>No Rooms registered yet.</p>
             <% end %>
           </div>
-</div>
-
-
-
-
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
     <div class="my-rooms-container px-2">
       <h2 class="mt-4 ms-2"><strong>My liked rooms</strong></h2>
-
       <% if current_user.likes && current_user.likes.length > 0 %>
       <% current_user.likes.each do |like| %>
       <div class="card-liked-infos mt-3">
-
-
           <div id=<%= "carouselExampleIndicators#{like.room.id}" %> class="carousel slide" data-bs-interval="false">
-
             <div class="carousel-inner">
               <% if like.room.photos.attached? %>
               <% like.room.photos.each_with_index do |photo, index| %>
@@ -213,24 +189,14 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-
-
         <div class="show-body mb-3">
           <div class="my-container px-2">
             <div class="row mt-4 mx-1 show-more-link">
-
-
               <p style="font-size: 16px;"><strong><%= like.room.address %></strong> </p>
               <p><strong>R$<%= sprintf("%.2f", like.room.price) %></strong></p>
               <p><strong>size: </strong><%= like.room.size %> m²</p>
               <p style="margin-top: 2px;"><%= like.room.description[0..60] %> ... </p>
-
-
-
-
               <%= link_to "Show more", room_url(like.room) %>
-
-
             </div>
           </div>
         </div>
@@ -240,8 +206,6 @@
     <% else %>
     <p>No Likes registered yet.</p>
     <% end %>
-
-
   </div>
 </div>
 </div>
