@@ -1,10 +1,31 @@
-<div>
-  <small style="color: #137e8f;">
-    <strong><%= message.user.name %></strong><%= message.created_at.strftime(" on %b %e at %l:%M %p") %>
-  </small>
+<% if message.user == current_user %>
+  <div style="text-align: right; margin-left: 25%;">
+    <small style="color: #137e8f; padding-right: 20px;">
+      <% if message.user.avatar.attached? %>
+        <%= cl_image_tag message.user.avatar.key, class: "avatar-small dropdown-toggle" %>
+      <% else %>
+        <%= image_tag "avatar.webp", class: "avatar-small dropdown-toggle"%>
+      <% end %>
+      <strong><%= message.user.name %></strong><%= message.created_at.strftime(" on %b %e at %l:%M %p") %>
+    </small>
 
-  <div class="message-box">
-    <p class="small p-2 ms-3 mb-2 rounded-pill message-text"><%= message.content %></p>
+    <div class="message-box">
+      <p class="small py-2 ms-3 mb-2 rounded-pill message-text"><%= message.content %></p>
+    </div>
   </div>
+<% else %>
+  <div style="text-align: left; margin-right: 25%;">
+    <small style="color: #137e8f;">
+      <% if message.user.avatar.attached? %>
+        <%= cl_image_tag message.user.avatar.key, class: "avatar-small dropdown-toggle" %>
+      <% else %>
+        <%= image_tag "avatar.webp", class: "avatar-small dropdown-toggle"%>
+      <% end %>
+      <strong><%= message.user.name %></strong><%= message.created_at.strftime(" on %b %e at %l:%M %p") %>
+    </small>
 
-</div>
+    <div class="message-box">
+      <p class="small py-2 mb-2 rounded-pill message-text"><%= message.content %></p>
+    </div>
+  </div>
+<% end %>
