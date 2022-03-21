@@ -148,15 +148,15 @@
 
     &:active {
     border: none !important;
-  }
+    }
 
-  &:focus {
-    border: none !important;
-  }
+    &:focus {
+      border: none !important;
+    }
 
-  &:hover {
-    border: none !important;
-  }
+    &:hover {
+      border: none !important;
+    }
 }
 
 #match-button {
@@ -186,6 +186,17 @@
   text-decoration: none;
   font-weight: 700;
   font-size: 24px;
+  &:active {
+      color: #ed3b5a !important;
+    }
+
+    &:focus {
+      color: #ed3b5a  !important;
+    }
+
+    &:hover {
+      color: #ed3b5a  !important;
+    }
 }
 
 #btn-show-map {
