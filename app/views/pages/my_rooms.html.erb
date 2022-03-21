@@ -5,22 +5,22 @@
     <% @compatibilities.each do |compatibility| %>
     <div class="notification">
       <div class="notification-user">
-      <%= link_to user_profile_path(compatibility.user1.id, compatibility.id) do %>
-      <div class="notifications-user">
+        <%= link_to user_profile_path(compatibility.user1.id, compatibility.id) do %>
+        <div class="notifications-user">
 
 
-        <% if compatibility.user1.avatar.attached? %>
-        <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
-        <% else %>
-        <%= image_tag "avatar.webp", class: "avatar-large"%>
-        <% end %>
-        <% end %>
-</div>
+          <% if compatibility.user1.avatar.attached? %>
+          <%= cl_image_tag compatibility.user1.avatar.key, class: "avatar-large" %>
+          <% else %>
+          <%= image_tag "avatar.webp", class: "avatar-large"%>
+          <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="notification-content">
 
         <p><small><strong>Send a message to</strong> </small></p>
-          <p><small><strong><%= compatibility.user1.name %></strong></small></p>
+        <p><small><strong><%= compatibility.user1.name %></strong></small></p>
 
       </div>
     </div>
@@ -34,8 +34,8 @@
 
     <h2><strong>
         <hr>
-        <a style="font-size: 20px" class="show-my-room-link py-2 px-2" id="" data-bs-toggle="collapse" href="#collapseExample" role="button"
-          aria-expanded="false" aria-controls="collapseExample">
+        <a style="font-size: 20px" class="show-my-room-link py-2 px-2" id="" data-bs-toggle="collapse"
+          href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Show my offered rooms ▼
         </a>
         <hr>
@@ -135,7 +135,7 @@
             <p>No Rooms registered yet.</p>
             <% end %>
           </div>
-
+</div>
 
 
 
@@ -153,11 +153,11 @@
     <div class="my-rooms-container px-2">
       <h2 class="mt-4 ms-2"><strong>My liked rooms</strong></h2>
 
+      <% if current_user.likes && current_user.likes.length > 0 %>
+      <% current_user.likes.each do |like| %>
       <div class="card-liked-infos mt-3">
-        <% if current_user.likes && current_user.likes.length > 0 %>
 
-        <% current_user.likes.each do |like| %>
-        <div>
+
           <div id=<%= "carouselExampleIndicators#{like.room.id}" %> class="carousel slide" data-bs-interval="false">
 
             <div class="carousel-inner">
@@ -184,7 +184,7 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-        </div>
+
 
         <div class="show-body mb-3">
           <div class="my-container px-2">
@@ -206,8 +206,8 @@
           </div>
         </div>
       </div>
-    </div>
     <% end %>
+    </div>
     <% else %>
     <p>No Likes registered yet.</p>
     <% end %>
