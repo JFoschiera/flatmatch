@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_233835) do
+ActiveRecord::Schema.define(version: 2022_03_21_140108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2022_03_20_233835) do
     t.integer "user2_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "like_id", null: false
+    t.index ["like_id"], name: "index_compatibilities_on_like_id"
     t.index ["user1_id"], name: "index_compatibilities_on_user1_id"
     t.index ["user2_id"], name: "index_compatibilities_on_user2_id"
   end
@@ -161,6 +163,7 @@ ActiveRecord::Schema.define(version: 2022_03_20_233835) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "compatibilities", "likes"
   add_foreign_key "likes", "rooms"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "chatrooms"
