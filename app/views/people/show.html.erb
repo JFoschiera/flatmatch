@@ -9,17 +9,17 @@
     <div class="me-3">
       <%= image_tag @person.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     </div>
-    <h1 class="mt-2"><strong><%= @person.first_name %>'s Profile</strong></h1>
+    <h1 class="mt-2"><%= @person.first_name %>'s Profile</h1>
     <% elsif @person.avatar.attached? %>
     <div class="me-3">
       <%= cl_image_tag @person.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     </div>
-    <h1 class="mt-2"><strong><%= @person.name %>'s Profile</strong></h1>
+    <h1 class="mt-2"><%= @person.name %>'s Profile</h1>
     <% else %>
     <div class="me-3">
       <%= image_tag "avatar.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
     </div>
-    <h1 class="mt-2"><strong><%= @person.name %>'s Profile</strong></h1>
+    <h1 class="mt-2"><%= @person.name %>'s Profile</h1>
     <% end %>
 
 </div>
@@ -32,8 +32,8 @@
     <% end %>
 
     <div class="match-button">
-      <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
-      <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
+      <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn main-button py-2 rounded-pill", id: "" do %>
+      <span>Like back<i style="color: #fff" class="fas fa-heart  ms-1"></i></span>
       <% end %>
     </div>
   </div>
@@ -68,9 +68,8 @@
 
   </div>
   <% end %>
-  <div class="my-4 match-button">
-    <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn btn-secondary py-2 rounded-pill", id: "match-button" do %>
-    <span>Like back<i class="fas fa-heart liked ms-1"></i></span>
-    <% end %>
-  </div>
-</div>
+      <div class="match-button my-4">
+      <%= link_to room_like_compatibilities_path(@like.room, @like), method: :post, class: "btn main-button py-2 rounded-pill", id: "" do %>
+      <span>Like back<i style="color: #fff" class="fas fa-heart  ms-1"></i></span>
+      <% end %>
+    </div>

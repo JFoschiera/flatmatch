@@ -2,9 +2,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  background: #ed3b5a;
+  background: rgb(237,59,90);
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
+  min-height: 90px;
+  text-decoration: none !important;
+  border-radius: 4px;
+
+
 }
 
 .notification .notification-content {
@@ -39,4 +44,26 @@
 
 .notification .notification-actions a:hover {
   color: #555555;
+}
+
+.notifications-user {
+  width: 100px;
+
+  p {
+    color: rgb(237,59,90) !important;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
+
+.notification-card {
+  text-decoration: none;
+}
+
+.notification-user {
+  text-decoration: none;
+  width: 90px;
 }

@@ -94,9 +94,18 @@
 }
 
 .disliked {
-  color: #DBDBDB !important;
+  color: #c4bbbb !important;
+
 }
 
 .liked {
   color: #ed3b5a !important;
+}
+
+.card-liked-infos {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px;
+  border-radius: 4px;
 }

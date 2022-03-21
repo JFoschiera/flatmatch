@@ -18,3 +18,24 @@
 .fa-chevron-circle-right {
   font-size: 50px;
 }
+
+
+// input[type='range'] {
+//   overflow: hidden;
+//   width: 80px;
+//   -webkit-appearance: none;
+// }
+
+// input[type='range']::-webkit-slider-runnable-track {
+//   height: 10px;
+//   -webkit-appearance: none;
+// }
+
+input[type='range']::-webkit-slider-thumb {
+  width: 17px;
+  -webkit-appearance: none;
+  height: 17px;
+  cursor: ew-resize;
+  background: #ed3b5a;
+  border: 2px solid #000;
+}

@@ -61,7 +61,7 @@ export default class extends Controller {
   }
 
   _timeout() {
-    this.map.setView([39.53818, -79.43430000000001], 7);
+    this.map.setView([39.53818, -79.43430000000001], 7), 0;
   };
 
 }
