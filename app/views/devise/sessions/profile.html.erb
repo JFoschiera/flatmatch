@@ -62,7 +62,7 @@
           <%= answer.question.question_description %></p>
         <p class="answer-description"><%= answer.question.answer_description.partition('10').first %></p>
         <p class="answer-description">10 <%= answer.question.answer_description.partition('10 ').last %></p>
-        <p class="choice">Your ratting: <%= answer.score %></p>
+        <p class="choice">Your rating: <%= answer.score %></p>
       </div>
 
       <% end %>
