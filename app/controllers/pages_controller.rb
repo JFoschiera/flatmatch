@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
   def my_rooms
     @compatibilities = Compatibility.where("user1_id = ? OR user2_id = ?", current_user.id, current_user.id)
+    @chatrooms = Chatroom.all
   end
 end
