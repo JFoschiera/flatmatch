@@ -35,6 +35,17 @@
 // }
 
 .all-content {
+
+  h1 {
+    font-size: 60px;
+    color: #ed3b5a;
+  }
+
+  p {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+  }
 }
 
 .present-card {
@@ -50,8 +61,23 @@
 }
 
 .first {
-  background-color: #ed3b5a;
-  // margin-right: 90px;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  height: 130px;
+  width: 100%;
+  border-radius: 25px 0 0 25px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.second {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   height: 130px;
   width: 100%;
   border-radius: 0 25px 25px 0;
@@ -59,36 +85,35 @@
   margin-bottom: 40px;
 }
 
-.second {
-  background-color: #ed3b5a;
-  // margin-left: 90px;
+.third {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   height: 130px;
   width: 100%;
   border-radius: 25px 0 0 25px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-bottom: 40px;
-
-
-}
-
-.third {
-  background-color: #ed3b5a;
-  // margin-right: 90px;
-  height: 130px;
-  width: 100%;
-  border-radius: 0 25px 25px 0;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 40px;
-
+  p{
+    text-align: center;
+  }
 
 }
 
 .fourth {
-  background-color: #ed3b5a;
-  // margin-left: 90px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   height: 130px;
   width: 100%;
-  border-radius: 25px 0 0 25px;
+  border-radius: 0 25px 25px 0;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 40px;
+}
 
+.presentation-next {
+  color: #ed3b5a;
+  margin: 20px 0 0 20px;
 }
