@@ -3,6 +3,13 @@
   border-top: none;
 }
 
-#message-box {
-  border: 1px solid #000;
+.message-box {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.message-box p {
+  background-color: #137e8f;
+  color: #fff;
+  padding: 20px;
 }

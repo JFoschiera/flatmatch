@@ -10,7 +10,7 @@ class AboutsController < ApplicationController
     @about.save
 
     if @about.save
-      if !current_user.answers || current_user.answers.length < 10
+      if !current_user.answers || current_user.answers.length < 5
         redirect_to new_answer_path
       else
         redirect_to rooms_path

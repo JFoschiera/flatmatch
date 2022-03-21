@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+  post 'chatrooms/:user_id', to: 'chatrooms#create', as: 'chatrooms_create'
+
 end

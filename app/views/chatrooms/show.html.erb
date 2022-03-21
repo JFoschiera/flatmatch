@@ -1,17 +1,14 @@
 <section>
   <div class="container py-3">
-
     <div class="row d-flex justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-6">
-
         <div class="mx-1 chatroom"
           data-controller="chatroom-subscription"
           data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
         >
-
-                <h1 class="align-items-center btn-sign-up">Messages</h1>
-
-
+              <h1 class="align-items-center btn-sign-up d-flex justify-content-between">
+                <span>Messages</span>
+              </h1>
               <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
                 <div class="messages" data-chatroom-subscription-target="messages">
                   <% @chatroom.messages.each do |message| %>
@@ -19,8 +16,6 @@
                   <% end %>
                 </div>
                 <div class="card-footer text-muted d-flex justify-content-start align-items-center p-2">
-
-
                     <% if current_user.facebook_picture_url %>
                     <%= image_tag current_user.facebook_picture_url, class: "avatar me-2 dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <% elsif current_user.avatar.attached? %>

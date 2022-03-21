@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       elsif !current_user.about
         redirect_to presentation_path
         # redirect_to new_about_path
-      elsif !current_user.answers || current_user.answers.length < 10
+      elsif !current_user.answers || current_user.answers.length < 5
         redirect_to new_answer_path
       else
         redirect_to rooms_path
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     elsif !current_user.about
       # new_about_path
       presentation_path
-    elsif !current_user.answers || current_user.answers.length < 10
+    elsif !current_user.answers || current_user.answers.length < 5
       new_answer_path
     else
       rooms_path
