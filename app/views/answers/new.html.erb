@@ -30,7 +30,7 @@
               </div>
 
               <div class="form-actions" style="text-align: right;" data-controller="disable-button">
-                <%= button_tag type: 'submit', class: "btn btn-transparent", data: { action: "click->questions#next disable-button#disable", question: index } do %>
+                <%= button_tag type: 'submit', class: "btn btn-outline-light", data: { action: "click->questions#next disable-button#disable", question: index } do %>
                   <i class="fas fa-chevron-circle-right" style="color: #ed3b5a" id="question-button" aria-hidden="true"></i>
                 <% end %>
               </div>
